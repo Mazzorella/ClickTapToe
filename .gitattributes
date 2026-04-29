@@ -1,0 +1,15 @@
+# GitHub Linguist does not currently classify ZMK keymap/devicetree/Kconfig
+# files as their own languages. Treat them as C-like firmware source so the
+# repository language bar reflects the firmware instead of only the Makefile.
+*.keymap linguist-language=C
+*.overlay linguist-language=C
+*.dtsi linguist-language=C
+Kconfig* linguist-language=C
+*.conf linguist-language=C
+
+# Count ZMK build metadata as YAML instead of excluding it as data.
+*.yml linguist-language=YAML linguist-detectable
+*.yaml linguist-language=YAML linguist-detectable
+
+# Keep prose documentation out of the language bar.
+*.md linguist-documentation
