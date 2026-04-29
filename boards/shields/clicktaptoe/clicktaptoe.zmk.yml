@@ -1,0 +1,9 @@
+file_format: "1"
+id: clicktaptoe
+name: ClickTapToe
+type: shield
+requires:
+  - xiao
+features:
+  - keys
+  - pointer

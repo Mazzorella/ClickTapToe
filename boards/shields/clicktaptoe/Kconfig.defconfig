@@ -1,0 +1,15 @@
+if SHIELD_CLICKTAPTOE
+
+config ZMK_KEYBOARD_NAME
+    default "ClickTapToe"
+
+config ZMK_USB
+    default y
+
+config ZMK_BLE
+    default n
+
+config ZMK_POINTING
+    default y
+
+endif

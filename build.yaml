@@ -1,0 +1,4 @@
+include:
+  - board: xiao_ble//zmk
+    shield: clicktaptoe
+    artifact-name: clicktaptoe_xiao_ble_zmk
