@@ -31,4 +31,18 @@
         kscan = <&kscan0>;
         transform = <&default_transform>;
     };
+
+    scroll_encoder: encoder_scroll {
+        compatible = "alps,ec11";
+        a-gpios = <&xiao_d 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; /* D2 */
+        b-gpios = <&xiao_d 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; /* D3 */
+        steps = <80>;
+        status = "okay";
+    };
+
+    sensors: sensors {
+        compatible = "zmk,keymap-sensors";
+        sensors = <&scroll_encoder>;
+        triggers-per-rotation = <20>;
+    };
 };

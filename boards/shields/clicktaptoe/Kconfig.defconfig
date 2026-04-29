@@ -12,4 +12,7 @@ config ZMK_BLE
 config ZMK_POINTING
     default y
 
+config EC11
+    default y
+
 endif

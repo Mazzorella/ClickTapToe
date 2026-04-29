@@ -6,13 +6,14 @@ This repository contains the firmware, hardware notes, and project documentation
 
 ## Current Status
 
-The current firmware supports USB mouse clicks from the center pedal module:
+The current firmware supports USB mouse clicks from the center pedal module and USB vertical scrolling from the main module scroll wheel:
 
 - Left click on the first pedal input
 - Right click on the second pedal input
+- Vertical scroll from the EC11 encoder connected to the scroll wheel
 - The third pedal jack is reserved and currently unassigned
 
-Scroll wheel and PMW3610 pointing support are part of the hardware design but are not included in this initial firmware baseline.
+PMW3610 pointing support is part of the hardware design but is not included in the current firmware.
 
 ## Hardware Overview
 
@@ -60,6 +61,8 @@ Use a safe desktop target for click testing, such as an empty Finder window or b
 
 - Short physical `D0` to `GND`; the host should receive a left click.
 - Short physical `D1` to `GND`; the host should receive a right click.
+- Rotate the EC11 encoder; the host should receive vertical scroll events.
+- Leave the encoder disconnected once as a negative test; the host should not scroll continuously.
 - Leave the third pedal jack disconnected until its GPIO pin is finalized.
 
 If macOS does not immediately recognize the updated HID device, unplug and reconnect the XIAO BLE.
