@@ -2,7 +2,7 @@
 
 ClickTapToe is a custom foot-operated mouse for people who need to reduce repetitive hand and arm movement. The goal is to move common mouse actions away from the hands by using foot pedals for clicking, a large foot-driven scroll wheel, and a separate right-foot pointing module.
 
-This repository contains the firmware, hardware notes, and project documentation for ClickTapToe. The current firmware target is a Seeed Studio XIAO nRF52840 / XIAO BLE running as a USB HID mouse with ZMK.
+This repository contains the firmware, hardware notes, and project documentation for ClickTapToe. The current firmware target is a Seeed Studio XIAO nRF52840 / XIAO BLE running as a USB HID mouse with ZMK. Bluetooth is disabled for the ClickTapToe firmware build.
 
 ## Current Status
 
@@ -11,9 +11,10 @@ The current firmware supports USB mouse clicks from the center pedal module and 
 - Left click on the first pedal input
 - Right click on the second pedal input
 - Vertical scroll from the EC11 encoder connected to the scroll wheel
+- Pointer movement from the PMW3610 sensor in the right-foot pointing module
 - The third pedal jack is reserved and currently unassigned
 
-PMW3610 pointing support is part of the hardware design but is not included in the current firmware.
+PMW3610 pointing support is included in the v0.3.0 firmware work.
 
 ## Hardware Overview
 
@@ -45,14 +46,14 @@ The active firmware target is:
 ```yaml
 board: xiao_ble//zmk
 shield: clicktaptoe
-artifact-name: clicktaptoe_xiao_ble_zmk
+artifact-name: clicktaptoe_xiao_usb_zmk
 ```
 
 ## Flashing
 
 1. Build the firmware with GitHub Actions or a local ZMK toolchain.
 2. Put the XIAO BLE into bootloader mode so it mounts as a UF2 drive.
-3. Copy the generated `clicktaptoe_xiao_ble_zmk.uf2` file onto the mounted drive.
+3. Copy the generated `clicktaptoe_xiao_usb_zmk.uf2` file onto the mounted drive.
 4. After the board reboots, connect it to the host over USB.
 
 ## Hardware Test
@@ -62,10 +63,14 @@ Use a safe desktop target for click testing, such as an empty Finder window or b
 - Short physical `D0` to `GND`; the host should receive a left click.
 - Short physical `D1` to `GND`; the host should receive a right click.
 - Rotate the EC11 encoder; the host should receive vertical scroll events.
+- Move the PMW3610 sensor over a surface; the host pointer should move smoothly in the same direction.
+- Test the PMW3610 once through the RJ45 cable path; pointer response should match the direct breadboard wiring test.
 - Leave the encoder disconnected once as a negative test; the host should not scroll continuously.
 - Leave the third pedal jack disconnected until its GPIO pin is finalized.
 
 If macOS does not immediately recognize the updated HID device, unplug and reconnect the XIAO BLE.
+If an old Bluetooth name appears after flashing, remove the cached Bluetooth entry from the host. This firmware build disables ZMK BLE.
+If the PMW3610 does not move the pointer after flashing, power-cycle the XIAO once. The firmware includes an extra PMW3610 power-up delay because the sensor reset pin is not routed.
 
 ## Local Build Notes
 
@@ -78,6 +83,7 @@ One common local layout is to keep this repository next to a ZMK firmware checko
 ```text
 projects/
   zmk/
+  zmk-pmw3610-driver/
   ClickTapToe/
 ```
 
@@ -98,6 +104,12 @@ west update
 
 Restart the devcontainer after `west update` completes.
 
+Clone the PMW3610 driver module where the `Makefile` can find it. In the default devcontainer layout:
+
+```sh
+git clone https://github.com/badjeff/zmk-pmw3610-driver /workspaces/zmk-pmw3610-driver
+```
+
 After that, run the build commands from this repository:
 
 ```sh
@@ -113,7 +125,7 @@ make uf2
 The copied firmware path is:
 
 ```sh
-firmware/clicktaptoe_xiao_ble_zmk.uf2
+firmware/clicktaptoe_xiao_usb_zmk.uf2
 ```
 
 By default, the `Makefile` expects ZMK's app directory to be available at `../zmk/app`, which matches the sibling directory layout shown above. Override `ZMK_APP` if your checkout path differs:
@@ -128,5 +140,11 @@ The wrapped `west` command has this shape:
 west build -d build/clicktaptoe -b "xiao_ble//zmk" -- \
   -DSHIELD=clicktaptoe \
   -DZMK_CONFIG="/path/to/this-repo/config" \
-  -DZMK_EXTRA_MODULES="/path/to/this-repo"
+  -DZMK_EXTRA_MODULES="/path/to/this-repo;/path/to/zmk-pmw3610-driver"
+```
+
+By default, the `Makefile` expects the PMW3610 driver module at `../zmk-pmw3610-driver`. Override `PMW3610_MODULE` if your checkout path differs:
+
+```sh
+make uf2 PMW3610_MODULE=/path/to/zmk-pmw3610-driver
 ```

@@ -6,6 +6,20 @@ The format is based on Keep a Changelog, and this project uses semantic versioni
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-04-30
+
+### Firmware
+
+- Add PMW3610 pointing support on the XIAO SPI bus for the right-foot module.
+- Add the external `badjeff/zmk-pmw3610-driver` module to the west manifest.
+- Force the ClickTapToe build to USB HID mode with ZMK BLE disabled.
+- Add a PMW3610 startup delay for the no-reset sensor wiring.
+
+### Hardware
+
+- Document the no-reset PMW3610 RJ45 pinout for the right-foot pointing module.
+- Validate PMW3610 pointing over the RJ45 cable path.
+
 ## [0.2.0] - 2026-04-29
 
 ### Firmware
