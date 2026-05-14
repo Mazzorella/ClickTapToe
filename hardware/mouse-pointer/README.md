@@ -52,6 +52,16 @@ Twisted pair grouping:
 The RJ45 connector is unshielded. ESD protection is planned as a separate layout
 pass near the RJ45 connector.
 
+## Online Review
+
+`kicanvas.html` embeds the schematic and PCB in KiCanvas for browser-based
+review. If GitHub Pages is enabled from the repository root, the mouse pointer
+viewer is available at:
+
+```text
+https://mazzorella.github.io/ClickTapToe/hardware/mouse-pointer/kicanvas.html
+```
+
 ## Planned Layout
 
 - `kicad/` for KiCad project source files
