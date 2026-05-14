@@ -35,15 +35,24 @@ The current firmware supports PMW3610 pointing from the mouse pointer module ove
 
 | Function | XIAO pin | PMW3610 pin | RJ45 pin / color | Status |
 | --- | --- | --- | --- | --- |
-| Sensor power | `3V3` | `VDD` / `VIN` | `7` / white-brown | Implemented |
-| Sensor ground | `GND` | `GND` | `2` / orange, `6` / green, `8` / brown | Implemented |
-| SPI clock | `D8` / `P1.13` | `SCK` | `1` / white-orange | Implemented |
-| SPI data | `D10` / `P1.15` | `SDIO` | `3` / white-green | Implemented |
-| Chip select | `D9` / `P1.14` | `NCS` | `4` / blue | Implemented |
-| Motion interrupt | `D7` / `P1.12` | `MOT` | `5` / white-blue | Implemented |
-| Sensor reset | none | `nRESET` | none | Not routed |
+| Sensor power | `3V3` | `VIN` / `VDDIO` default | `1` / white-orange | Board routed |
+| Sensor ground | `GND` | `GND` | `2` / orange, `6` / green | Board routed |
+| SPI clock | `D8` / `P1.13` | `SCLK` | `3` / white-green | Board routed |
+| SPI data | `D10` / `P1.15` | `SDIO` | `4` / blue | Board routed |
+| Chip select | `D9` / `P1.14` | `nCS` | `5` / white-blue | Board routed |
+| Motion interrupt | `D7` / `P1.12` | `MOTION` | `7` / white-brown | Board routed |
+| Sensor reset | TBD | `nRESET` | `8` / brown | Board routed |
 
-The mouse pointer module connects to the input hub through RJ45. The high-activity `SCK` and `SDIO` signals are paired with ground on their respective twisted pairs.
+The mouse pointer module connects to the input hub through an 8P8C modular jack
+used as a ClickTapToe sensor cable, not Ethernet. The cable pairing is:
+
+| Pair | RJ45 pins | Signals |
+| --- | --- | --- |
+| Pair 1 | 1-2 | `VIN` / `3V3` + `GND` |
+| Pair 2 | 3-6 | `SCLK` + `GND` |
+| Pair 3 | 4-5 | `SDIO` + `nCS` |
+| Pair 4 | 7-8 | `MOTION` + `nRESET` |
 
 The PMW3610 orientation is corrected in firmware with `swap-xy` and `invert-y`.
-Because `nRESET` is not routed, firmware adds an extra PMW3610 power-up delay before sensor initialization.
+The mouse pointer board routes `nRESET` over RJ45, but the input hub reset GPIO
+assignment is still TBD until the hub board is updated.
