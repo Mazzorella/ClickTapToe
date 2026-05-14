@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "mouse_pointer")(type "KiCad")(uri "${KIPRJMOD}/mouse_pointer.kicad_sym")(options "")(descr ""))
+)

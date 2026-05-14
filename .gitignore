@@ -1,4 +1,8 @@
+# OS
 .DS_Store
+Thumbs.db
+
+# Local build outputs and external workspaces
 build/
 firmware/
 .west/
@@ -6,3 +10,51 @@ zephyr/*
 !zephyr/module.yml
 zmk/
 modules/
+
+# For PCBs designed using KiCad: http://www.kicad-pcb.org/
+# Format documentation: http://kicad-pcb.org/help/file-formats/
+
+# Temporary files
+*.000
+*.bak
+*.bck
+*.kicad_pcb-bak
+*.sch-bak
+*.kicad_sch-bak
+*~
+_autosave-*
+\#auto_saved_files\#
+*.tmp
+*-save.pro
+*-save.kicad_pcb
+fp-info-cache
+~*.kicad*.lck
+*.kicad_prl
+
+# Netlist files (exported from Eeschema)
+*.net
+
+# Autorouter files (exported from Pcbnew)
+*.dsn
+*.ses
+
+# Exported BOM files
+*.xml
+
+# Exported Gerber and production files
+fabrication-toolkit-options.json
+jlcpcb/
+[Gg]erber/
+*.g[tb][lops]
+*.gbr
+*.gm1
+*.drl
+*.zip
+
+# Backup
+*-backups/
+.history/
+
+# Board production outputs
+hardware/**/production/*
+!hardware/**/production/.gitkeep
