@@ -20,7 +20,7 @@ The current firmware uses direct GPIO inputs. Pedals short the signal pin to `GN
 
 ## Current Scroll Input
 
-The current firmware supports vertical scroll with an EC11 encoder in the main module.
+The current firmware supports vertical scroll with an EC11 encoder in the input hub.
 
 | Function | XIAO pin | Status |
 | --- | --- | --- |
@@ -31,7 +31,7 @@ The current firmware supports vertical scroll with an EC11 encoder in the main m
 
 ## Current Pointing Input
 
-The current firmware supports PMW3610 pointing from the right-foot module over the XIAO SPI bus. The PMW3610 uses a bidirectional `SDIO` pin, so firmware maps both SPI MOSI and MISO to XIAO `D10`.
+The current firmware supports PMW3610 pointing from the mouse pointer module over the XIAO SPI bus. The PMW3610 uses a bidirectional `SDIO` pin, so firmware maps both SPI MOSI and MISO to XIAO `D10`.
 
 | Function | XIAO pin | PMW3610 pin | RJ45 pin / color | Status |
 | --- | --- | --- | --- | --- |
@@ -43,7 +43,7 @@ The current firmware supports PMW3610 pointing from the right-foot module over t
 | Motion interrupt | `D7` / `P1.12` | `MOT` | `5` / white-blue | Implemented |
 | Sensor reset | none | `nRESET` | none | Not routed |
 
-The right-foot pointing module connects through RJ45. The high-activity `SCK` and `SDIO` signals are paired with ground on their respective twisted pairs.
+The mouse pointer module connects to the input hub through RJ45. The high-activity `SCK` and `SDIO` signals are paired with ground on their respective twisted pairs.
 
 The PMW3610 orientation is corrected in firmware with `swap-xy` and `invert-y`.
 Because `nRESET` is not routed, firmware adds an extra PMW3610 power-up delay before sensor initialization.

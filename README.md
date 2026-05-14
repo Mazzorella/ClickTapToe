@@ -1,29 +1,28 @@
 # ClickTapToe
 
-ClickTapToe is a custom foot-operated mouse for people who need to reduce repetitive hand and arm movement. The goal is to move common mouse actions away from the hands by using foot pedals for clicking, a large foot-driven scroll wheel, and a separate right-foot pointing module.
+ClickTapToe is a custom foot-operated mouse for people who need to reduce repetitive hand and arm movement. The goal is to move common mouse actions away from the hands by using foot pedals for clicking, a large foot-driven scroll wheel, and a separate mouse pointer module.
 
 This repository contains the firmware, hardware notes, and project documentation for ClickTapToe. The current firmware target is a Seeed Studio XIAO nRF52840 / XIAO BLE running as a USB HID mouse with ZMK. Bluetooth is disabled for the ClickTapToe firmware build.
 
 ## Current Status
 
-The current firmware supports USB mouse clicks from the center pedal module and USB vertical scrolling from the main module scroll wheel:
+The current firmware supports USB mouse clicks from external pedals, USB vertical scrolling from the input hub scroll wheel, and pointer movement from the mouse pointer module:
 
 - Left click on the first pedal input
 - Right click on the second pedal input
-- Vertical scroll from the EC11 encoder connected to the scroll wheel
-- Pointer movement from the PMW3610 sensor in the right-foot pointing module
+- Vertical scroll from the EC11 encoder connected to the input hub scroll wheel
+- Pointer movement from the PMW3610 sensor in the mouse pointer module
 - The third pedal jack is reserved and currently unassigned
 
 PMW3610 pointing support is included in the v0.3.0 firmware work.
 
 ## Hardware Overview
 
-ClickTapToe is built from multiple modules:
+ClickTapToe is built from two custom electronics modules plus external pedals:
 
-- The main module contains the XIAO nRF52840 controller and a large foot-operated scroll wheel coupled to an EC11 encoder.
-- The center pedal module has three TS jacks for simple foot pedals used as mouse buttons.
-- The right-foot pointing module is shaped like a slipper and houses a PMW3610 pointing sensor.
-- The center pedal module and pointing module connect over RJ45 with a short Ethernet cable.
+- The input hub contains the XIAO nRF52840 controller, USB connection, external pedal TS jacks, RJ45 pointer connection, and a large foot-operated scroll wheel coupled to an EC11 encoder.
+- The mouse pointer module is shaped like a slipper, houses a PMW3610 pointing sensor, and connects to the input hub over RJ45 with a short Ethernet cable.
+- The pedals are premade external pedals connected to the input hub so higher-quality parts can be used and the project is easier to reproduce.
 
 See [HARDWARE.md](HARDWARE.md) for the current pin map and hardware notes.
 
@@ -35,8 +34,8 @@ See [HARDWARE.md](HARDWARE.md) for the current pin map and hardware notes.
 - `zephyr/module.yml` declares this repository as the `zmk-keyboard-clicktaptoe` module and exposes the top-level `boards/` directory.
 - `boards/shields/clicktaptoe/` contains the ClickTapToe shield definition, overlay, metadata, and default keymap.
 - `Makefile` wraps the local `west build` command for Docker/devcontainer use.
-- `hardware/main-module/` is reserved for the main controller and scroll wheel PCB.
-- `hardware/center-module/` is reserved for the center pedal and RJ45 PCB.
+- `hardware/input-hub/` is reserved for the controller, scroll wheel, pedal jack, and RJ45 hub PCB.
+- `hardware/mouse-pointer/` is reserved for the PMW3610 mouse pointer PCB.
 - `docs/` is reserved for assembly, usage, and release documentation.
 
 ## Build Target
@@ -63,7 +62,7 @@ Use a safe desktop target for click testing, such as an empty Finder window or b
 - Short physical `D0` to `GND`; the host should receive a left click.
 - Short physical `D1` to `GND`; the host should receive a right click.
 - Rotate the EC11 encoder; the host should receive vertical scroll events.
-- Move the PMW3610 sensor over a surface; the host pointer should move smoothly in the same direction.
+- Move the mouse pointer module over a surface; the host pointer should move smoothly in the same direction.
 - Test the PMW3610 once through the RJ45 cable path; pointer response should match the direct breadboard wiring test.
 - Leave the encoder disconnected once as a negative test; the host should not scroll continuously.
 - Leave the third pedal jack disconnected until its GPIO pin is finalized.

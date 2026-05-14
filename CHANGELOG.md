@@ -6,6 +6,18 @@ The format is based on Keep a Changelog, and this project uses semantic versioni
 
 ## [Unreleased]
 
+## [0.3.1] - 2026-05-14
+
+### Documentation
+
+- Add contributing notes for commit style, branch policy, releases, and changelog updates.
+- Standardize hardware board naming around the input hub and mouse pointer modules.
+
+### Hardware
+
+- Replace the old placeholder hardware folders with input-hub and mouse-pointer placeholders.
+- Add a per-folder CERN-OHL-P v2 license placeholder for future input-hub hardware source.
+
 ## [0.3.0] - 2026-04-30
 
 ### Firmware
