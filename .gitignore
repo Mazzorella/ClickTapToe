@@ -41,6 +41,9 @@ fp-info-cache
 # Exported BOM files
 *.xml
 
+# Generated ERC/DRC reports
+*.rpt
+
 # Exported Gerber and production files
 fabrication-toolkit-options.json
 jlcpcb/

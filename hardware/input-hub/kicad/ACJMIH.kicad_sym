@@ -1,0 +1,126 @@
+
+(kicad_symbol_lib (version 20211014) (generator kicad_symbol_editor)
+  (symbol "ACJMIH" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+    (property "Reference" "J" (id 0) (at -10.16 10.16 0)
+      (effects (font (size 1.27 1.27)) (justify bottom left))
+    )
+    (property "Value" "ACJMIH" (id 1) (at -10.16 -7.62 0)
+      (effects (font (size 1.27 1.27)) (justify top left))
+    )
+    (property "Footprint" "ACJMIH:AMPHENOL_ACJMIH" (id 2) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "Manufacturer" "Amphenol Audio" (id 20) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "MFR. Part #" "ACJM-IH" (id 21) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "JLCPCB Part #" "" (id 22) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "Digi-Key MFR. Part #" "ACJM-IH" (id 23) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "Digi-Key Part #" "889-ACJM-IH-ND" (id 24) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "Description" "\n                        \n                            1/4 Horizonal PCB Phone Jack, Mono, Plastic Bezel, Metal Nut, Metal Thread\n                        \n" (id 13) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (symbol "ACJMIH_0_0"
+      (polyline
+        (pts (xy -8.89 2.54) (xy -7.62 2.54)) (stroke (width 0.254))
+      )
+      (polyline
+        (pts (xy -7.62 2.54) (xy -6.35 2.54)) (stroke (width 0.254))
+      )
+      (polyline
+        (pts (xy -6.35 2.54) (xy -6.35 -6.35)) (stroke (width 0.254))
+      )
+      (polyline
+        (pts (xy -6.35 -6.35) (xy -8.89 -6.35)) (stroke (width 0.254))
+      )
+      (polyline
+        (pts (xy -8.89 -6.35) (xy -8.89 2.54)) (stroke (width 0.254))
+      )
+      (polyline
+        (pts (xy -7.62 2.54) (xy -7.62 7.62)) (stroke (width 0.254))
+      )
+      (polyline
+        (pts (xy -7.62 7.62) (xy 5.08 7.62)) (stroke (width 0.254))
+      )
+      (polyline
+        (pts (xy -2.54 2.54) (xy -1.27 1.27)) (stroke (width 0.254))
+      )
+      (polyline
+        (pts (xy -1.27 1.27) (xy 0.0 2.54)) (stroke (width 0.254))
+      )
+      (polyline
+        (pts (xy 0.0 2.54) (xy 5.08 2.54)) (stroke (width 0.254))
+      )
+      (polyline
+        (pts (xy 0.0 5.08) (xy 5.08 5.08)) (stroke (width 0.254))
+      )
+      (polyline
+        (pts (xy 0.0 5.08) (xy 0.0 6.858)) (stroke (width 0.254))
+      )
+      (polyline
+        (pts
+          (xy 0.0 6.858)
+          (xy -0.254 6.096)
+          (xy 0.254 6.096)
+          (xy 0.0 6.858)
+        )
+        (stroke (width 0.254)) (fill (type outline))
+      )
+      (polyline
+        (pts (xy 2.54 0.0) (xy 5.08 0.0)) (stroke (width 0.254))
+      )
+      (polyline
+        (pts (xy 2.54 0.0) (xy 2.54 1.778)) (stroke (width 0.254))
+      )
+      (polyline
+        (pts
+          (xy 2.54 1.778)
+          (xy 2.286 1.016)
+          (xy 2.794 1.016)
+          (xy 2.54 1.778)
+        )
+        (stroke (width 0.254)) (fill (type outline))
+      )
+      (pin passive line (at 10.16 7.62 180.0) (length 5.08)
+        (name "~"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "S"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin passive line (at 10.16 5.08 180.0) (length 5.08)
+        (name "~"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "SN"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin passive line (at 10.16 0.0 180.0) (length 5.08)
+        (name "~"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "TN"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin passive line (at 10.16 2.54 180.0) (length 5.08)
+        (name "~"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "T"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+    )
+  )
+)
