@@ -21,7 +21,9 @@ The current firmware uses direct GPIO inputs. Pedals short the signal pin to `GN
 
 ## Current Scroll Input
 
-The current firmware supports vertical scroll with an EC11 encoder in the input hub.
+The current firmware supports vertical scroll with a Bourns
+`PEC11R-4215F-S0024` encoder in the input hub. This encoder has 24 detents and
+24 pulses per full rotation.
 
 | Function | XIAO pin | Status |
 | --- | --- | --- |
@@ -33,6 +35,10 @@ The current firmware supports vertical scroll with an EC11 encoder in the input 
 The scroll option bus uses `D4`/`D5` for the EC11 validation build. These pins
 are also reserved for a possible AS5600 I2C scroll option in a later hardware
 revision.
+
+ZMK is configured with `steps = <96>` for the EC11 quadrature transition count
+and `triggers-per-rotation = <24>` so the scroll behavior triggers once per
+detent.
 
 ## Current Pointing Input
 

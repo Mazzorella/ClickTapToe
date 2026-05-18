@@ -40,14 +40,15 @@
         compatible = "alps,ec11";
         a-gpios = <&xiao_d 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; /* D4 / scroll option bus */
         b-gpios = <&xiao_d 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; /* D5 / scroll option bus */
-        steps = <80>;
+        /* Bourns PEC11R-4215F-S0024: 24 pulses/detents, 4 quadrature edges per pulse. */
+        steps = <96>;
         status = "okay";
     };
 
     sensors: sensors {
         compatible = "zmk,keymap-sensors";
         sensors = <&scroll_encoder>;
-        triggers-per-rotation = <20>;
+        triggers-per-rotation = <24>;
     };
 
     pmw3610_listener: pmw3610_listener {
