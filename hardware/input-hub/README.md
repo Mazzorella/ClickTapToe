@@ -7,6 +7,26 @@ connects to the computer over USB, receives the external pedal TS jacks,
 connects to the mouse pointer board over RJ45, and interfaces with the EC11
 scroll encoder.
 
+## XIAO Pin Test Plan
+
+This validation plan keeps the existing click pedals on `D0`/`D1`, moves the
+EC11 encoder to the scroll option bus on `D4`/`D5`, and leaves the PMW3610 SPI
+signals unchanged.
+
+| XIAO pin | Signal plan | Firmware status |
+| --- | --- | --- |
+| `D0` | Left click pedal | Implemented |
+| `D1` | Right click pedal | Implemented |
+| `D2` | Future footswitch / TTS / spare input | Test direct GPIO input, emits play/pause |
+| `D3` | Future footswitch / TTS / spare input | Test direct GPIO input, emits volume up |
+| `D4` | Scroll option bus: EC11 A now, possible AS5600 I2C later | Implemented as EC11 GPIO |
+| `D5` | Scroll option bus: EC11 B now, possible AS5600 I2C later | Implemented as EC11 GPIO |
+| `D6` | PMW3610 `nRESET` | Reserved, not wired in firmware |
+| `D7` | PMW3610 `MOTION` | Implemented |
+| `D8` / `P1.13` | PMW3610 `SCLK` | Implemented |
+| `D9` / `P1.14` | PMW3610 `nCS` | Implemented |
+| `D10` / `P1.15` | PMW3610 `SDIO` | Implemented |
+
 ## Mouse Pointer RJ45 Pinout
 
 The mouse pointer connector is an 8P8C modular jack used for ClickTapToe sensor
@@ -22,7 +42,7 @@ pointer board exactly.
 | 5 | `nCS` | PMW3610 chip select |
 | 6 | `GND` | Ground |
 | 7 | `MOTION` | PMW3610 motion interrupt |
-| 8 | `nRESET` | PMW3610 reset |
+| 8 | `nRESET` | PMW3610 reset, reserved on XIAO `D6` |
 
 Twisted pair grouping:
 

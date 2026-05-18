@@ -127,6 +127,9 @@ The copied firmware path is:
 firmware/clicktaptoe_xiao_usb_zmk.uf2
 ```
 
+Build outputs are written under this repository's ignored `build/` directory,
+not under ZMK's `app/` tree.
+
 By default, the `Makefile` expects ZMK's app directory to be available at `../zmk/app`, which matches the sibling directory layout shown above. Override `ZMK_APP` if your checkout path differs:
 
 ```sh
@@ -136,7 +139,7 @@ make uf2 ZMK_APP=/path/to/zmk/app
 The wrapped `west` command has this shape:
 
 ```sh
-west build -d build/clicktaptoe -b "xiao_ble//zmk" -- \
+west build -d "/path/to/this-repo/build/clicktaptoe" -b "xiao_ble//zmk" -- \
   -DSHIELD=clicktaptoe \
   -DZMK_CONFIG="/path/to/this-repo/config" \
   -DZMK_EXTRA_MODULES="/path/to/this-repo;/path/to/zmk-pmw3610-driver"

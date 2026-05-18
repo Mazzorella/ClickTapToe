@@ -16,7 +16,8 @@ The current firmware uses direct GPIO inputs. Pedals short the signal pin to `GN
 | --- | --- | --- | --- |
 | Left click pedal | `D0` | `&mkp LCLK` | Implemented |
 | Right click pedal | `D1` | `&mkp RCLK` | Implemented |
-| Third pedal jack | `TBD` | none | Reserved |
+| Future footswitch / TTS / spare input | `D2` | `&kp C_PLAY_PAUSE` | Test direct GPIO input |
+| Future footswitch / TTS / spare input | `D3` | `&kp C_VOL_UP` | Test direct GPIO input |
 
 ## Current Scroll Input
 
@@ -24,10 +25,14 @@ The current firmware supports vertical scroll with an EC11 encoder in the input 
 
 | Function | XIAO pin | Status |
 | --- | --- | --- |
-| EC11 channel A | `D2` | Implemented |
-| EC11 channel B | `D3` | Implemented |
+| Scroll option bus / EC11 channel A | `D4` | Implemented as EC11 GPIO |
+| Scroll option bus / EC11 channel B | `D5` | Implemented as EC11 GPIO |
 | EC11 common | `GND` | Implemented |
 | EC11 push switch | unused | Reserved |
+
+The scroll option bus uses `D4`/`D5` for the EC11 validation build. These pins
+are also reserved for a possible AS5600 I2C scroll option in a later hardware
+revision.
 
 ## Current Pointing Input
 
@@ -41,7 +46,7 @@ The current firmware supports PMW3610 pointing from the mouse pointer module ove
 | SPI data | `D10` / `P1.15` | `SDIO` | `4` / blue | Board routed |
 | Chip select | `D9` / `P1.14` | `nCS` | `5` / white-blue | Board routed |
 | Motion interrupt | `D7` / `P1.12` | `MOTION` | `7` / white-brown | Board routed |
-| Sensor reset | TBD | `nRESET` | `8` / brown | Board routed |
+| Sensor reset | `D6` | `nRESET` | `8` / brown | Reserved, not wired in firmware |
 
 The mouse pointer module connects to the input hub through an 8P8C modular jack
 used as a ClickTapToe sensor cable, not Ethernet. The cable pairing is:
@@ -54,5 +59,6 @@ used as a ClickTapToe sensor cable, not Ethernet. The cable pairing is:
 | Pair 4 | 7-8 | `MOTION` + `nRESET` |
 
 The PMW3610 orientation is corrected in firmware with `swap-xy` and `invert-y`.
-The mouse pointer board routes `nRESET` over RJ45, but the input hub reset GPIO
-assignment is still TBD until the hub board is updated.
+The mouse pointer board routes `nRESET` over RJ45, and the input hub reserves
+XIAO `D6` for it. The current PMW3610 firmware binding does not expose a clean
+hardware reset GPIO, so reset remains unwired in firmware for this test plan.

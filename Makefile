@@ -7,7 +7,7 @@ CONFIG_DIR ?= $(CURDIR)/config
 MODULE_DIR ?= $(CURDIR)
 PMW3610_MODULE ?= $(abspath $(CURDIR)/../zmk-pmw3610-driver)
 EXTRA_MODULES ?= $(MODULE_DIR);$(PMW3610_MODULE)
-BUILD_DIR ?= build/$(SHIELD)
+BUILD_DIR ?= $(CURDIR)/build/$(SHIELD)
 UF2_DIR ?= $(CURDIR)/firmware
 UF2_FILE ?= $(UF2_DIR)/$(ARTIFACT_NAME).uf2
 
@@ -24,6 +24,7 @@ help:
 	@echo "  ZMK_APP=$(ZMK_APP)"
 	@echo "  BOARD=$(BOARD)"
 	@echo "  SHIELD=$(SHIELD)"
+	@echo "  BUILD_DIR=$(BUILD_DIR)"
 	@echo "  PMW3610_MODULE=$(PMW3610_MODULE)"
 
 check-pmw3610-module:
@@ -46,8 +47,8 @@ pristine: check-pmw3610-module
 
 uf2: build
 	mkdir -p "$(UF2_DIR)"
-	cp "$(ZMK_APP)/$(BUILD_DIR)/zephyr/zmk.uf2" "$(UF2_FILE)"
+	cp "$(BUILD_DIR)/zephyr/zmk.uf2" "$(UF2_FILE)"
 	@echo "UF2 copied to $(UF2_FILE)"
 
 clean:
-	rm -rf "$(ZMK_APP)/$(BUILD_DIR)" "$(UF2_DIR)"
+	rm -rf "$(BUILD_DIR)" "$(UF2_DIR)"

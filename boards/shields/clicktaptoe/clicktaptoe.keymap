@@ -26,6 +26,8 @@
             bindings = <
                 &mkp LCLK
                 &mkp RCLK
+                &kp C_PLAY_PAUSE
+                &kp C_VOL_UP
             >;
 
             sensor-bindings = <&scroll_up_down>;
