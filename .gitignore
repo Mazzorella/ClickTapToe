@@ -61,3 +61,8 @@ jlcpcb/
 # Board production outputs
 hardware/**/production/*
 !hardware/**/production/.gitkeep
+
+# Release-ready mouse pointer fabrication outputs
+!hardware/mouse-pointer/kicad/production/
+!hardware/mouse-pointer/kicad/production/*
+hardware/mouse-pointer/kicad/production/backups/

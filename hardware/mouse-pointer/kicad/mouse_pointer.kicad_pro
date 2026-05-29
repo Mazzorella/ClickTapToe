@@ -76,7 +76,16 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        [
+          "silk_edge_clearance|142227500|67226757|928422bb-5160-4be8-8dc9-8a78706be329|bd78c39e-cd1a-4141-90e6-3d04c82f1a92",
+          ""
+        ],
+        [
+          "silk_edge_clearance|157747500|67226757|928422bb-5160-4be8-8dc9-8a78706be329|b9d68d67-6339-4c57-b86e-e9c07ec9af2f",
+          ""
+        ]
+      ],
       "meta": {
         "version": 2
       },
@@ -727,7 +736,7 @@
         "uuid": "0a24e726-7b2f-42a2-8e64-ccc5f26dfd32"
       }
     ],
-    "used_designators": "JP4",
+    "used_designators": "",
     "variants": []
   },
   "sheets": [

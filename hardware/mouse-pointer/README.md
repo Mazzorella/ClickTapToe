@@ -48,9 +48,12 @@ Twisted pair grouping:
   before the signal leaves the board.
 - `R2` is a 100k optional `nCS` pull-up to `VDDIO` and is DNP by default.
 - `J1` remains as a debug/test header on the PMW3610-side signals.
+- `U3` and `U4` are TPD4E05U06DQAR ESD protection arrays on the RJ45-facing
+  cable signals.
 
-The RJ45 connector is unshielded. ESD protection is planned as a separate layout
-pass near the RJ45 connector.
+The RJ45 connector is unshielded and is intended for hand installation. `J1` is
+also optional/test-only and is not assigned a JLCPCB part number in the
+production BOM.
 
 ## Online Review
 
