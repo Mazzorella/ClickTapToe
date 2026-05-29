@@ -4,13 +4,13 @@ This folder contains source files and notes for the ClickTapToe input hub PCB.
 
 The input hub is the central electronics board. It hosts the XIAO nRF52840,
 connects to the computer over USB, receives the external pedal TS jacks,
-connects to the mouse pointer board over RJ45, and interfaces with the EC11
-scroll encoder.
+connects to the mouse pointer board over RJ45, and interfaces with the AS5600
+scroll sensor.
 
 ## XIAO Pin Test Plan
 
-This validation plan keeps the existing click pedals on `D0`/`D1`, moves the
-EC11 encoder to the scroll option bus on `D4`/`D5`, and leaves the PMW3610 SPI
+This validation plan keeps the existing click pedals on `D0`/`D1`, uses the
+AS5600 scroll sensor on the `D4`/`D5` I2C bus, and leaves the PMW3610 SPI
 signals unchanged.
 
 | XIAO pin | Signal plan | Firmware status |
@@ -19,8 +19,8 @@ signals unchanged.
 | `D1` | Right click pedal | Implemented |
 | `D2` | Future footswitch / TTS / spare input | Test direct GPIO input, emits play/pause |
 | `D3` | Future footswitch / TTS / spare input | Test direct GPIO input, emits volume up |
-| `D4` | Scroll option bus: EC11 A now, possible AS5600 I2C later | Implemented as EC11 GPIO |
-| `D5` | Scroll option bus: EC11 B now, possible AS5600 I2C later | Implemented as EC11 GPIO |
+| `D4` | AS5600 I2C bus | Implemented as `&xiao_i2c` |
+| `D5` | AS5600 I2C bus | Implemented as `&xiao_i2c` |
 | `D6` | PMW3610 `nRESET` | Reserved, not wired in firmware |
 | `D7` | PMW3610 `MOTION` | Implemented |
 | `D8` / `P1.13` | PMW3610 `SCLK` | Implemented |

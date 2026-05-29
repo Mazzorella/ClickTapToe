@@ -1,0 +1,20 @@
+menuconfig CLICKTAPTOE_AS5600_SCROLL
+    bool "ClickTapToe AS5600 scroll sensor"
+    default y
+    depends on DT_HAS_CLICKTAPTOE_AS5600_SCROLL_ENABLED
+    depends on I2C
+    help
+      Enable the AS5600 magnetic angle sensor as a ZMK rotation sensor for
+      ClickTapToe scrolling.
+
+if CLICKTAPTOE_AS5600_SCROLL
+
+config CLICKTAPTOE_AS5600_SCROLL_INIT_PRIORITY
+    int "ClickTapToe AS5600 scroll initialization priority"
+    default SENSOR_INIT_PRIORITY
+
+module = CLICKTAPTOE_AS5600_SCROLL
+module-str = CLICKTAPTOE_AS5600_SCROLL
+source "${ZEPHYR_BASE}/subsys/logging/Kconfig.template.log_config"
+
+endif

@@ -1,0 +1,21 @@
+description: |
+  ClickTapToe AS5600 magnetic scroll wheel adapter.
+
+compatible: "clicktaptoe,as5600-scroll"
+
+include: [sensor-device.yaml, i2c-device.yaml]
+
+properties:
+  poll-ms:
+    type: int
+    default: 8
+    description: Polling interval in milliseconds.
+
+  deadband:
+    type: int
+    default: 0
+    description: Raw 12-bit AS5600 counts to ignore per sample as idle jitter.
+
+  invert:
+    type: boolean
+    description: Invert reported scroll direction.

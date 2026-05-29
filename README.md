@@ -10,7 +10,7 @@ The current firmware supports USB mouse clicks from external pedals, USB vertica
 
 - Left click on the first pedal input
 - Right click on the second pedal input
-- Vertical scroll from the EC11 encoder connected to the input hub scroll wheel
+- Vertical scroll from the AS5600 magnetic angle sensor connected to the input hub scroll wheel
 - Pointer movement from the PMW3610 sensor in the mouse pointer module
 - The third pedal jack is reserved and currently unassigned
 
@@ -20,7 +20,7 @@ PMW3610 pointing support is included in the v0.3.0 firmware work.
 
 ClickTapToe is built from two custom electronics modules plus external pedals:
 
-- The input hub contains the XIAO nRF52840 controller, USB connection, external pedal TS jacks, RJ45 pointer connection, and a large foot-operated scroll wheel coupled to an EC11 encoder.
+- The input hub contains the XIAO nRF52840 controller, USB connection, external pedal TS jacks, RJ45 pointer connection, and a large foot-operated scroll wheel coupled to an AS5600 magnetic angle sensor.
 - The mouse pointer module is shaped like a slipper, houses a PMW3610 pointing sensor, and connects to the input hub over RJ45 with a short Ethernet cable.
 - The pedals are premade external pedals connected to the input hub so higher-quality parts can be used and the project is easier to reproduce.
 
@@ -31,7 +31,7 @@ See [HARDWARE.md](HARDWARE.md) for the current pin map and hardware notes.
 - `.github/workflows/build.yml` runs the upstream ZMK user-config build workflow.
 - `build.yaml` defines the firmware build matrix.
 - `config/west.yml` tracks upstream ZMK and imports ZMK's west manifest.
-- `zephyr/module.yml` declares this repository as the `zmk-keyboard-clicktaptoe` module and exposes the top-level `boards/` directory.
+- `zephyr/module.yml` declares this repository as the `zmk-keyboard-clicktaptoe` module and exposes its board, devicetree binding, Kconfig, and driver files.
 - `boards/shields/clicktaptoe/` contains the ClickTapToe shield definition, overlay, metadata, and default keymap.
 - `Makefile` wraps the local `west build` command for Docker/devcontainer use.
 - `hardware/input-hub/` is reserved for the controller, scroll wheel, pedal jack, and RJ45 hub PCB.
@@ -61,10 +61,10 @@ Use a safe desktop target for click testing, such as an empty Finder window or b
 
 - Short physical `D0` to `GND`; the host should receive a left click.
 - Short physical `D1` to `GND`; the host should receive a right click.
-- Rotate the EC11 encoder; the host should receive vertical scroll events.
+- Rotate the AS5600 scroll wheel; the host should receive vertical scroll events.
 - Move the mouse pointer module over a surface; the host pointer should move smoothly in the same direction.
 - Test the PMW3610 once through the RJ45 cable path; pointer response should match the direct breadboard wiring test.
-- Leave the encoder disconnected once as a negative test; the host should not scroll continuously.
+- Leave the AS5600 magnet away from the sensor once as a negative test; the host should not scroll continuously.
 - Leave the third pedal jack disconnected until its GPIO pin is finalized.
 
 If macOS does not immediately recognize the updated HID device, unplug and reconnect the XIAO BLE.

@@ -36,18 +36,9 @@
         transform = <&default_transform>;
     };
 
-    scroll_encoder: encoder_scroll {
-        compatible = "alps,ec11";
-        a-gpios = <&xiao_d 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; /* D4 / scroll option bus */
-        b-gpios = <&xiao_d 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; /* D5 / scroll option bus */
-        /* Bourns PEC11R-4215F-S0024: 24 pulses/detents, 4 quadrature edges per pulse. */
-        steps = <96>;
-        status = "okay";
-    };
-
     sensors: sensors {
         compatible = "zmk,keymap-sensors";
-        sensors = <&scroll_encoder>;
+        sensors = <&scroll_as5600>;
         triggers-per-rotation = <24>;
     };
 
@@ -58,6 +49,18 @@
 };
 
 /* D6 is reserved for PMW3610 nRESET; the current PMW3610 binding relies on SPI software reset. */
+
+&xiao_i2c {
+    status = "okay";
+
+    scroll_as5600: as5600_scroll@36 {
+        compatible = "clicktaptoe,as5600-scroll";
+        reg = <0x36>;
+        poll-ms = <8>;
+        deadband = <0>;
+        status = "okay";
+    };
+};
 
 &spi2_default {
     group1 {

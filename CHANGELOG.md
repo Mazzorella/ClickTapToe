@@ -36,8 +36,8 @@ The format is based on Keep a Changelog, and this project uses semantic versioni
 
 ### Firmware
 
-- EC11 scroll wheel support for USB vertical scrolling.
-- Documentation for the scroll encoder pin map and hardware test steps.
+- AS5600 magnetic scroll wheel support for USB vertical scrolling.
+- Documentation for the AS5600 scroll pin map and hardware test steps.
 
 ### Hardware
 
