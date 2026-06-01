@@ -5,7 +5,7 @@
 	(lib (name "PEC11R") (type "KiCad") (uri "${KIPRJMOD}/PEC11R-4215F-S0024.kicad_sym") (options "") (descr ""))
 	(lib (name "JST") (type "KiCad") (uri "${KIPRJMOD}/BM04B-SRSS-TB_LF__SN_.kicad_sym") (options "") (descr ""))
 	(lib (name "TPD") (type "KiCad") (uri "${KIPRJMOD}/TPD4E05U06DQAR.kicad_sym") (options "") (descr ""))
-	(lib (name "BAT") (type "KiCad") (uri "${KIPRJMOD}/S2B-PH-SM4-TB_LF__SN_.kicad_sym") (options "") (descr ""))
+	(lib (name "BAT_VERTICAL") (type "KiCad") (uri "${KIPRJMOD}/B2B-PH-SM4-TB.kicad_sym") (options "") (descr ""))
 	(lib (name "3.5mm") (type "KiCad") (uri "${KIPRJMOD}/PJ-307.kicad_sym") (options "") (descr ""))
 	(lib (name "XIAO_BAT") (type "KiCad") (uri "${KIPRJMOD}/XIAO_BAT_SOLDER_ACCESS.kicad_sym") (options "") (descr ""))
 )

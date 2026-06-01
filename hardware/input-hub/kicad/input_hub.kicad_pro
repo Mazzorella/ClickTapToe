@@ -78,30 +78,6 @@
       ],
       "drc_exclusions": [
         [
-          "silk_edge_clearance|103550000|57000000|c7db5154-767d-4867-b1f9-80ef244d2008|502ac39f-3fe7-47c4-9666-8314e16b0b8e",
-          ""
-        ],
-        [
-          "silk_edge_clearance|113550000|57000000|c7db5154-767d-4867-b1f9-80ef244d2008|05f226f3-b135-4e39-935e-c378fd81a58c",
-          ""
-        ],
-        [
-          "silk_edge_clearance|123550000|57000000|c7db5154-767d-4867-b1f9-80ef244d2008|73736a5a-a75d-430c-972a-c03e6582036d",
-          ""
-        ],
-        [
-          "silk_edge_clearance|124850000|57000000|c7db5154-767d-4867-b1f9-80ef244d2008|d776f4e8-dc7a-4e27-9e55-46d95f9cc806",
-          ""
-        ],
-        [
-          "silk_edge_clearance|134850000|57000000|c7db5154-767d-4867-b1f9-80ef244d2008|c5c27250-e254-47f9-a76f-715685a4f995",
-          ""
-        ],
-        [
-          "silk_edge_clearance|144850000|57000000|c7db5154-767d-4867-b1f9-80ef244d2008|9718cfc7-181a-4e97-8c97-0ae4b0e847c1",
-          ""
-        ],
-        [
           "silk_edge_clearance|151960000|57000000|c7db5154-767d-4867-b1f9-80ef244d2008|cdb0f803-ff2e-4050-8cad-bb794ea1ef3e",
           ""
         ],
@@ -115,18 +91,6 @@
         ],
         [
           "silk_edge_clearance|183497500|57000000|c7db5154-767d-4867-b1f9-80ef244d2008|94bb750a-144c-410b-a15e-15c89e9c7816",
-          ""
-        ],
-        [
-          "silk_edge_clearance|185550000|57000000|c7db5154-767d-4867-b1f9-80ef244d2008|4ea669b2-5304-4067-93ce-69f84037574a",
-          ""
-        ],
-        [
-          "silk_edge_clearance|195550000|57000000|c7db5154-767d-4867-b1f9-80ef244d2008|d964a2e8-b80c-4fb8-9580-2fbf762bf80c",
-          ""
-        ],
-        [
-          "silk_edge_clearance|205550000|57000000|c7db5154-767d-4867-b1f9-80ef244d2008|f98e5a0a-d1be-486f-b512-077103d75c20",
           ""
         ]
       ],
@@ -818,7 +782,7 @@
         "uuid": "770eab34-1e0f-45ef-9190-c3b360ed8a79"
       }
     ],
-    "used_designators": "J9,J12-15",
+    "used_designators": "P1,J9,J12-15",
     "variants": []
   },
   "sheets": [
