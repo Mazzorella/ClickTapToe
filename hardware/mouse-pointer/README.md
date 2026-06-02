@@ -24,8 +24,8 @@ not Ethernet.
 | 4 | `SDIO` | PMW3610 bidirectional SPI data |
 | 5 | `nCS` | PMW3610 chip select |
 | 6 | `GND` | Ground return paired with `SCLK` |
-| 7 | `MOTION` | PMW3610 motion output after local series resistor |
-| 8 | `nRESET` | Reset from the input hub through a 0 ohm link |
+| 7 | `MOTION` | Active-low PMW3610 motion output after local series resistor |
+| 8 | `nRESET` | Reset routed from the input hub through a 0 ohm link |
 
 Twisted pair grouping:
 
@@ -54,6 +54,10 @@ Twisted pair grouping:
 The RJ45 connector is unshielded and is intended for hand installation. `J1` is
 also optional/test-only and is not assigned a JLCPCB part number in the
 production BOM.
+
+The current firmware handles `MOTION` on XIAO `D7` through RJ45 pin 7. `nRESET`
+is routed through RJ45 pin 8 to the input hub's reserved XIAO `D6` path, but the
+firmware does not drive the hardware reset line yet.
 
 ## Online Review
 

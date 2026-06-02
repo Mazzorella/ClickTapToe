@@ -12,7 +12,7 @@ The current firmware supports USB mouse clicks from external pedals, USB vertica
 - Right click on the second pedal input
 - Vertical scroll from the AS5600 magnetic angle sensor connected to the input hub scroll wheel
 - Pointer movement from the PMW3610 sensor in the mouse pointer module
-- The third pedal jack is reserved and currently unassigned
+- `D2` and `D3` remain spare/test inputs and are not exposed as production pedal jacks on the current input hub PCB
 
 PMW3610 pointing support is included in the v0.3.0 firmware work.
 
@@ -65,11 +65,11 @@ Use a safe desktop target for click testing, such as an empty Finder window or b
 - Move the mouse pointer module over a surface; the host pointer should move smoothly in the same direction.
 - Test the PMW3610 once through the RJ45 cable path; pointer response should match the direct breadboard wiring test.
 - Leave the AS5600 magnet away from the sensor once as a negative test; the host should not scroll continuously.
-- Leave the third pedal jack disconnected until its GPIO pin is finalized.
+- Verify `D2` and `D3` only as spare/test GPIOs if they are wired for bring-up.
 
 If macOS does not immediately recognize the updated HID device, unplug and reconnect the XIAO BLE.
 If an old Bluetooth name appears after flashing, remove the cached Bluetooth entry from the host. This firmware build disables ZMK BLE.
-If the PMW3610 does not move the pointer after flashing, power-cycle the XIAO once. The firmware includes an extra PMW3610 power-up delay because the sensor reset pin is not routed.
+If the PMW3610 does not move the pointer after flashing, power-cycle the XIAO once. The input hub physically routes PMW3610 `nRESET` on XIAO `D6` / RJ45 pin 8, but the current firmware still relies on SPI/software reset and does not drive that reset line yet.
 
 ## Local Build Notes
 

@@ -48,7 +48,7 @@
     };
 };
 
-/* D6 is reserved for PMW3610 nRESET; the current PMW3610 binding relies on SPI software reset. */
+/* D6 is routed to PMW3610 nRESET; firmware currently relies on SPI/software reset. */
 
 &xiao_i2c {
     status = "okay";

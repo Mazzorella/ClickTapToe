@@ -49,7 +49,7 @@ The current firmware supports PMW3610 pointing from the mouse pointer module ove
 | SPI data | `D10` / `P1.15` | `SDIO` | `4` / blue | Board routed |
 | Chip select | `D9` / `P1.14` | `nCS` | `5` / white-blue | Board routed |
 | Motion interrupt | `D7` / `P1.12` | `MOTION` | `7` / white-brown | Board routed |
-| Sensor reset | `D6` | `nRESET` | `8` / brown | Reserved, not wired in firmware |
+| Sensor reset | `D6` | `nRESET` | `8` / brown | Physically routed and reserved; not driven by firmware |
 
 The mouse pointer module connects to the input hub through an 8P8C modular jack
 used as a ClickTapToe sensor cable, not Ethernet. The cable pairing is:
@@ -63,5 +63,6 @@ used as a ClickTapToe sensor cable, not Ethernet. The cable pairing is:
 
 The PMW3610 orientation is corrected in firmware with `swap-xy` and `invert-y`.
 The mouse pointer board routes `nRESET` over RJ45, and the input hub reserves
-XIAO `D6` for it. The current PMW3610 firmware binding does not expose a clean
-hardware reset GPIO, so reset remains unwired in firmware for this test plan.
+XIAO `D6` for it. The current PMW3610 firmware path does not drive that reset
+line yet, so bring-up still relies on SPI/software reset and the PMW3610
+power-up delay.

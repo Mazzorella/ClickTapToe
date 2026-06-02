@@ -21,8 +21,8 @@ signals unchanged.
 | `D3` | Future footswitch / TTS / spare input | Test direct GPIO input, emits volume up |
 | `D4` | AS5600 I2C bus | Implemented as `&xiao_i2c` |
 | `D5` | AS5600 I2C bus | Implemented as `&xiao_i2c` |
-| `D6` | PMW3610 `nRESET` | Reserved, not wired in firmware |
-| `D7` | PMW3610 `MOTION` | Implemented |
+| `D6` | PMW3610 `nRESET` | Physically routed and reserved; not driven by firmware |
+| `D7` | PMW3610 `MOTION` | Implemented as PMW3610 interrupt |
 | `D8` / `P1.13` | PMW3610 `SCLK` | Implemented |
 | `D9` / `P1.14` | PMW3610 `nCS` | Implemented |
 | `D10` / `P1.15` | PMW3610 `SDIO` | Implemented |
@@ -42,7 +42,7 @@ pointer board exactly.
 | 5 | `nCS` | PMW3610 chip select |
 | 6 | `GND` | Ground |
 | 7 | `MOTION` | PMW3610 motion interrupt |
-| 8 | `nRESET` | PMW3610 reset, reserved on XIAO `D6` |
+| 8 | `nRESET` | PMW3610 reset routed to XIAO `D6`; not firmware-driven yet |
 
 Twisted pair grouping:
 
@@ -57,7 +57,12 @@ Series resistors for `SCLK`, `SDIO`, `nCS`, and `nRESET` belong on the input hub
 side. The mouse pointer board only adds a local 100 ohm series resistor on
 `MOTION`.
 
+`MOTION` is active-low and is handled by firmware on XIAO `D7` with a pull-up.
+`nRESET` is present in the cable and reserved on XIAO `D6`, but the current
+PMW3610 firmware path still uses SPI/software reset rather than driving the
+hardware reset line.
+
 ## Planned Layout
 
 - `kicad/` for KiCad project source files
-- `production/` for generated Gerbers, drill files, BOMs, and placement files
+- `kicad/production/` for generated Gerbers, drill files, BOMs, and placement files
