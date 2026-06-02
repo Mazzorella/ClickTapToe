@@ -11,6 +11,9 @@ The initial KiCad source for this board is derived from the PMW3610 breakout by
 PMW3610 optical/lens/LDO section while adding the project-specific RJ45 cable
 interface.
 
+Mouse Pointer 1.0 is the first ClickTapToe-maintained production revision of
+this board.
+
 ## RJ45 Pinout
 
 The connector is an 8P8C modular jack used for ClickTapToe sensor wiring. It is
@@ -55,9 +58,8 @@ The RJ45 connector is unshielded and is intended for hand installation. `J1` is
 also optional/test-only and is not assigned a JLCPCB part number in the
 production BOM.
 
-The current firmware handles `MOTION` on XIAO `D7` through RJ45 pin 7. `nRESET`
-is routed through RJ45 pin 8 to the input hub's reserved XIAO `D6` path, but the
-firmware does not drive the hardware reset line yet.
+The current firmware handles `MOTION` on XIAO `D7` through RJ45 pin 7 and
+pulses `nRESET` on XIAO `D6` through RJ45 pin 8 before PMW3610 initialization.
 
 ## Online Review
 

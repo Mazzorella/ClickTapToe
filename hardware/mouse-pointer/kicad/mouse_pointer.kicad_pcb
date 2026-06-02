@@ -9,7 +9,7 @@
 	(paper "A4")
 	(title_block
 		(title "Mouse Pointer")
-		(rev "3.0")
+		(rev "1.0")
 		(company "Mazzorella")
 		(comment 1 "Open Source Hardware, CERN-OHL-P v2")
 		(comment 2 "PMW3610DM-SUDU laser mouse sensor breakout board")
