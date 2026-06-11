@@ -11,5 +11,18 @@ Kconfig* linguist-language=C
 *.yml linguist-language=YAML linguist-detectable
 *.yaml linguist-language=YAML linguist-detectable
 
+# Show the hardware source in GitHub's language bar.
+*.kicad_pcb linguist-detectable
+*.kicad_mod linguist-detectable
+*.kicad_sch linguist-detectable
+*.kicad_sym linguist-detectable
+
+# Keep generated preview/export assets from dominating the language bar.
+docs/assets/*.svg linguist-generated
+hardware/**/kicad/assets/* linguist-generated
+hardware/**/kicad/3dmodels/* linguist-generated
+hardware/**/kicad/production/* linguist-generated
+firmware/*.uf2 linguist-generated
+
 # Keep prose documentation out of the language bar.
 *.md linguist-documentation
