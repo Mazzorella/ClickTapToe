@@ -1,0 +1,1068 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ClickTapToe Hardware Viewer</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #17202a;
+        --muted: #52606d;
+        --line: #d8dee4;
+        --panel: #ffffff;
+        --surface: #f5f7fa;
+        --accent: #147d64;
+        --accent-strong: #0f5f4c;
+        --warn: #9a5b13;
+        --nav: #263238;
+        --blue: #2563a8;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--surface);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        line-height: 1.5;
+      }
+
+      a {
+        color: var(--blue);
+        text-decoration: none;
+      }
+
+      a:hover,
+      a:focus {
+        text-decoration: underline;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+        background: var(--nav);
+        color: #fff;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        max-width: 1180px;
+        min-height: 58px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        min-width: 210px;
+      }
+
+      .brand strong {
+        font-size: 1rem;
+      }
+
+      .brand span {
+        color: #c9d4dd;
+        font-size: 0.88rem;
+      }
+
+      .navlinks {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 6px;
+      }
+
+      .navlinks a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 36px;
+        padding: 0 11px;
+        border-radius: 6px;
+        color: #eef4f7;
+        font-size: 0.9rem;
+      }
+
+      .navlinks a:hover,
+      .navlinks a:focus {
+        background: rgba(255, 255, 255, 0.12);
+        text-decoration: none;
+      }
+
+      main {
+        display: grid;
+        gap: 42px;
+      }
+
+      .intro {
+        background: #ffffff;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .intro-inner {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(300px, 420px);
+        gap: 36px;
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 44px 24px 34px;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        line-height: 1.12;
+      }
+
+      h1 {
+        max-width: 760px;
+        font-size: clamp(2.15rem, 5vw, 4.2rem);
+        letter-spacing: 0;
+      }
+
+      h2 {
+        font-size: clamp(1.7rem, 3vw, 2.35rem);
+      }
+
+      h3 {
+        font-size: 1.05rem;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      .lede {
+        max-width: 780px;
+        margin-top: 18px;
+        color: var(--muted);
+        font-size: 1.08rem;
+      }
+
+      .summary {
+        display: grid;
+        gap: 12px;
+        align-self: end;
+      }
+
+      .summary-row {
+        display: grid;
+        grid-template-columns: 110px 1fr;
+        gap: 14px;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .summary-row dt {
+        color: var(--muted);
+        font-weight: 700;
+      }
+
+      .summary-row dd {
+        margin: 0;
+      }
+
+      .section {
+        max-width: 1180px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .section-heading {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 18px;
+      }
+
+      .section-heading p {
+        max-width: 620px;
+        color: var(--muted);
+      }
+
+      .viewer-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .image-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .board-image {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+      }
+
+      .board-image img {
+        display: block;
+        width: 100%;
+        height: 360px;
+        object-fit: contain;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: #f8fafb;
+      }
+
+      .board-image figcaption {
+        color: var(--muted);
+        font-size: 0.92rem;
+        font-weight: 700;
+      }
+
+      .viewer {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+      }
+
+      .viewer-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        min-height: 58px;
+        padding: 12px 14px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .viewer-header p {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .viewer-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 8px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 36px;
+        padding: 0 12px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: #fff;
+        color: var(--ink);
+        font-size: 0.9rem;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+
+      .button.primary {
+        border-color: var(--accent);
+        background: var(--accent);
+        color: #fff;
+      }
+
+      .button:hover,
+      .button:focus {
+        border-color: var(--accent-strong);
+        text-decoration: none;
+      }
+
+      .button.primary:hover,
+      .button.primary:focus {
+        background: var(--accent-strong);
+      }
+
+      iframe {
+        display: block;
+        width: 100%;
+        height: min(68vh, 620px);
+        min-height: 430px;
+        border: 0;
+        background: #ffffff;
+      }
+
+      .downloads {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .download-card,
+      .step,
+      .note {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+      }
+
+      .download-card {
+        display: grid;
+        gap: 16px;
+        padding: 18px;
+      }
+
+      .download-card p {
+        color: var(--muted);
+      }
+
+      .link-list {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .link-list a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        min-height: 42px;
+        padding: 10px 12px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: #fafbfc;
+        color: var(--ink);
+        font-weight: 700;
+      }
+
+      .link-list a::after {
+        content: "Open";
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .link-list a:hover,
+      .link-list a:focus {
+        border-color: var(--accent);
+        text-decoration: none;
+      }
+
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        counter-reset: assembly;
+      }
+
+      .step {
+        position: relative;
+        min-height: 190px;
+        padding: 18px 18px 18px 58px;
+        counter-increment: assembly;
+      }
+
+      .step::before {
+        content: counter(assembly);
+        position: absolute;
+        top: 18px;
+        left: 18px;
+        display: grid;
+        place-items: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: #e7f4ef;
+        color: var(--accent-strong);
+        font-weight: 800;
+      }
+
+      .step h3 {
+        margin-bottom: 8px;
+      }
+
+      .step p {
+        color: var(--muted);
+      }
+
+      .pinout {
+        overflow-x: auto;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+      }
+
+      .bom-toolbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        margin-bottom: 12px;
+      }
+
+      .bom-toolbar p {
+        color: var(--muted);
+      }
+
+      .bom-table {
+        overflow-x: auto;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 780px;
+      }
+
+      th,
+      td {
+        padding: 12px 14px;
+        border-bottom: 1px solid var(--line);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        background: #eef2f5;
+        font-size: 0.86rem;
+        text-transform: uppercase;
+      }
+
+      .bom-table table {
+        min-width: 980px;
+      }
+
+      .qty {
+        width: 72px;
+        font-weight: 800;
+      }
+
+      tr:last-child td {
+        border-bottom: 0;
+      }
+
+      code {
+        padding: 0.08rem 0.25rem;
+        border-radius: 4px;
+        background: #edf1f4;
+        font-family:
+          "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+        font-size: 0.92em;
+      }
+
+      .notes {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 18px;
+      }
+
+      .note {
+        padding: 18px;
+      }
+
+      .note h3 {
+        margin-bottom: 10px;
+      }
+
+      .note p {
+        color: var(--muted);
+      }
+
+      .note.warning {
+        border-color: #e2b56c;
+        background: #fff8ec;
+      }
+
+      .note.warning h3 {
+        color: var(--warn);
+      }
+
+      footer {
+        margin-top: 22px;
+        border-top: 1px solid var(--line);
+        background: #fff;
+      }
+
+      .footer-inner {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 14px;
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 22px 24px;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      @media (max-width: 900px) {
+        .intro-inner,
+        .image-grid,
+        .viewer-grid,
+        .downloads,
+        .notes {
+          grid-template-columns: 1fr;
+        }
+
+        .steps {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .section-heading {
+          align-items: start;
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .nav {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 8px;
+          padding: 12px 16px;
+        }
+
+        .brand {
+          min-width: 0;
+        }
+
+        .navlinks {
+          justify-content: flex-start;
+        }
+
+        .intro-inner,
+        .section {
+          padding-right: 16px;
+          padding-left: 16px;
+        }
+
+        .summary-row {
+          grid-template-columns: 1fr;
+          gap: 3px;
+        }
+
+        .viewer-header {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .viewer-actions {
+          justify-content: flex-start;
+        }
+
+        .bom-toolbar {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        iframe {
+          height: 68vh;
+          min-height: 360px;
+        }
+
+        .steps {
+          grid-template-columns: 1fr;
+        }
+
+        .step {
+          min-height: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <nav class="nav" aria-label="Main navigation">
+        <div class="brand">
+          <strong>ClickTapToe</strong>
+          <span>Hardware Viewer</span>
+        </div>
+        <div class="navlinks">
+          <a href="#boards">Boards</a>
+          <a href="#files">Files</a>
+          <a href="#bom">BOM</a>
+          <a href="#assembly">Assembly</a>
+          <a href="#pinout">Pinout</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="intro">
+        <div class="intro-inner">
+          <div>
+            <h1>ClickTapToe Hardware Viewer</h1>
+            <p class="lede">
+              Review the two ClickTapToe boards, download the fabrication and
+              CAD files, and follow the build sequence without browsing the
+              GitHub repository tree.
+            </p>
+          </div>
+          <dl class="summary" aria-label="Project summary">
+            <div class="summary-row">
+              <dt>Controller</dt>
+              <dd>Seeed Studio XIAO nRF52840 / XIAO BLE</dd>
+            </div>
+            <div class="summary-row">
+              <dt>Input hub</dt>
+              <dd>Pedal jacks, USB, scroll sensor, and RJ45 pointer link</dd>
+            </div>
+            <div class="summary-row">
+              <dt>Pointer</dt>
+              <dd>PMW3610 mouse sensor module connected over RJ45</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="section" id="boards">
+        <div class="section-heading">
+          <div>
+            <h2>Board Images</h2>
+          </div>
+          <p>
+            These top-side PCB images are exported from the KiCad board files
+            and load quickly for a first-pass visual check.
+          </p>
+        </div>
+
+        <div class="image-grid">
+          <figure class="board-image">
+            <img src="docs/assets/input-hub-board.svg" alt="Top-side PCB view of the ClickTapToe input hub board">
+            <figcaption>Input hub board</figcaption>
+          </figure>
+          <figure class="board-image">
+            <img src="docs/assets/mouse-pointer-board.svg" alt="Top-side PCB view of the ClickTapToe mouse pointer board">
+            <figcaption>Mouse pointer board</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section" id="interactive">
+        <div class="section-heading">
+          <div>
+            <h2>Interactive Board Previews</h2>
+          </div>
+          <p>
+            The embedded KiCanvas views load the schematic and PCB files
+            directly from the published repository for detailed inspection.
+          </p>
+        </div>
+
+        <div class="viewer-grid">
+          <article class="viewer">
+            <div class="viewer-header">
+              <div>
+                <h3>Input hub</h3>
+                <p>Controller, pedals, scroll sensor, USB, and RJ45 hub board.</p>
+              </div>
+              <div class="viewer-actions">
+                <a class="button primary" href="hardware/input-hub/kicanvas.html">Full preview</a>
+                <a class="button" href="hardware/input-hub/README.md">Board notes</a>
+              </div>
+            </div>
+            <iframe
+              title="Input hub KiCanvas preview"
+              src="hardware/input-hub/kicanvas.html"
+              loading="lazy"
+            ></iframe>
+          </article>
+
+          <article class="viewer">
+            <div class="viewer-header">
+              <div>
+                <h3>Mouse pointer</h3>
+                <p>PMW3610 pointing sensor module with RJ45 cable interface.</p>
+              </div>
+              <div class="viewer-actions">
+                <a class="button primary" href="hardware/mouse-pointer/kicanvas.html">Full preview</a>
+                <a class="button" href="hardware/mouse-pointer/README.md">Board notes</a>
+              </div>
+            </div>
+            <iframe
+              title="Mouse pointer KiCanvas preview"
+              src="hardware/mouse-pointer/kicanvas.html"
+              loading="lazy"
+            ></iframe>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="files">
+        <div class="section-heading">
+          <div>
+            <h2>Fabrication And CAD Files</h2>
+          </div>
+          <p>
+            Use the production archives for PCB fabrication and assembly. STEP
+            files are provided for connector and component fit checks.
+          </p>
+        </div>
+
+        <div class="downloads">
+          <article class="download-card">
+            <div>
+              <h3>Input hub</h3>
+              <p>XIAO controller board with pedal, scroll, USB, and RJ45 connections.</p>
+            </div>
+            <ul class="link-list">
+              <li><a href="hardware/input-hub/kicad/production/input_hub.zip">Production archive</a></li>
+              <li><a href="hardware/input-hub/kicad/production/bom.csv">BOM CSV</a></li>
+              <li><a href="hardware/input-hub/kicad/production/positions.csv">Placement CSV</a></li>
+              <li><a href="hardware/input-hub/kicad/3dmodels/102010448.step">XIAO module STEP</a></li>
+              <li><a href="hardware/input-hub/kicad/3dmodels/ACJMIH.step">1/4 inch jack STEP</a></li>
+              <li><a href="hardware/input-hub/kicad/3dmodels/AUDIO-TH_PJ-307.step">3.5 mm jack STEP</a></li>
+              <li><a href="hardware/input-hub/kicad/3dmodels/54602-908LFc.stp">RJ45 jack STEP</a></li>
+            </ul>
+          </article>
+
+          <article class="download-card">
+            <div>
+              <h3>Mouse pointer</h3>
+              <p>PMW3610 optical sensor board for the foot-operated pointer module.</p>
+            </div>
+            <ul class="link-list">
+              <li><a href="hardware/mouse-pointer/kicad/production/Mouse_Pointer_1.0.zip">Production archive</a></li>
+              <li><a href="hardware/mouse-pointer/kicad/production/bom.csv">BOM CSV</a></li>
+              <li><a href="hardware/mouse-pointer/kicad/production/positions.csv">Placement CSV</a></li>
+              <li><a href="hardware/mouse-pointer/kicad/3dmodels/PMW3610DM-SUDU.step">PMW3610 sensor STEP</a></li>
+              <li><a href="hardware/mouse-pointer/kicad/3dmodels/54602-908LFc.stp">RJ45 jack STEP</a></li>
+              <li><a href="hardware/mouse-pointer/kicad/3dmodels/TPD4E05U06DQAR.step">ESD array STEP</a></li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="bom">
+        <div class="section-heading">
+          <div>
+            <h2>Overall Electronics BOM</h2>
+          </div>
+          <p>
+            Combined quantities for one complete electronics set: one input hub
+            board plus one mouse pointer board. Mechanical enclosure parts,
+            pedals, cable, magnet, and other off-board items can be added later.
+          </p>
+        </div>
+
+        <div class="bom-toolbar">
+          <p>Grouped by matching value, footprint, and supplier part number.</p>
+          <a class="button primary" href="docs/assets/clicktaptoe-electronics-bom.csv">Download CSV</a>
+        </div>
+
+        <div class="bom-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Qty</th>
+                <th>Value</th>
+                <th>Footprint</th>
+                <th>LCSC part</th>
+                <th>Used on</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="qty">4</td>
+                <td><code>1u</code></td>
+                <td>0603</td>
+                <td><code>C15849</code></td>
+                <td>Input hub C1 C3; mouse pointer C8 C9</td>
+              </tr>
+              <tr>
+                <td class="qty">2</td>
+                <td><code>10uF</code></td>
+                <td>0805</td>
+                <td><code>C15850</code></td>
+                <td>Input hub C2; mouse pointer C6</td>
+              </tr>
+              <tr>
+                <td class="qty">1</td>
+                <td><code>1206L012WR</code></td>
+                <td>1206</td>
+                <td><code>C151160</code></td>
+                <td>Input hub F1</td>
+              </tr>
+              <tr>
+                <td class="qty">1</td>
+                <td><code>B2B-PH-SM4-TB</code></td>
+                <td>JST_PH_B2B-PH-SM4-TB_1x02-1MP_P2.00mm_Vertical</td>
+                <td><code>C160352</code></td>
+                <td>Input hub J11</td>
+              </tr>
+              <tr>
+                <td class="qty">1</td>
+                <td><code>BM04B-SRSS-TB_LF__SN_</code></td>
+                <td>JST_BM04B-SRSS-TB_LF__SN_</td>
+                <td><code>C160390</code></td>
+                <td>Input hub J5</td>
+              </tr>
+              <tr>
+                <td class="qty">2</td>
+                <td><code>330</code></td>
+                <td>0603</td>
+                <td><code>C23138</code></td>
+                <td>Input hub R1 R2</td>
+              </tr>
+              <tr>
+                <td class="qty">3</td>
+                <td><code>47R</code></td>
+                <td>0603</td>
+                <td><code>C23182</code></td>
+                <td>Input hub R3 R4 R5</td>
+              </tr>
+              <tr>
+                <td class="qty">2</td>
+                <td><code>100</code></td>
+                <td>0603</td>
+                <td><code>C22775</code></td>
+                <td>Input hub R6; mouse pointer R3</td>
+              </tr>
+              <tr>
+                <td class="qty">4</td>
+                <td><code>10k</code></td>
+                <td>0603</td>
+                <td><code>C25804</code></td>
+                <td>Input hub R7 R8 R9; mouse pointer R1</td>
+              </tr>
+              <tr>
+                <td class="qty">4</td>
+                <td><code>TPD4E05U06DQAR</code></td>
+                <td>IC_TPD4E05U06DQAR</td>
+                <td><code>C138714</code></td>
+                <td>Input hub U2 U3; mouse pointer U3 U4</td>
+              </tr>
+              <tr>
+                <td class="qty">1</td>
+                <td><code>3.3uF/16V</code></td>
+                <td>0805</td>
+                <td><code>C7393948</code></td>
+                <td>Mouse pointer C1</td>
+              </tr>
+              <tr>
+                <td class="qty">3</td>
+                <td><code>100nF</code></td>
+                <td>0603</td>
+                <td><code>C14663</code></td>
+                <td>Mouse pointer C2 C3 C4</td>
+              </tr>
+              <tr>
+                <td class="qty">2</td>
+                <td><code>10nF</code></td>
+                <td>0603</td>
+                <td><code>C57112</code></td>
+                <td>Mouse pointer C5 C7</td>
+              </tr>
+              <tr>
+                <td class="qty">2</td>
+                <td><code>0R</code></td>
+                <td>0603</td>
+                <td><code>C21189</code></td>
+                <td>Mouse pointer JP1 JP3</td>
+              </tr>
+              <tr>
+                <td class="qty">1</td>
+                <td><code>PMW3610</code></td>
+                <td>PMW3610DM-SUDU 16Pin</td>
+                <td><code>C42442560</code></td>
+                <td>Mouse pointer U1</td>
+              </tr>
+              <tr>
+                <td class="qty">1</td>
+                <td><code>TLV74318PDBVR</code></td>
+                <td>SOT-23-5_HandSoldering</td>
+                <td><code>C485152</code></td>
+                <td>Mouse pointer U2</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section" id="assembly">
+        <div class="section-heading">
+          <div>
+            <h2>Assembly Guide</h2>
+          </div>
+          <p>
+            This is the high-level build order for the current electronics. Use
+            the board previews and BOMs above for part placement and orientation.
+          </p>
+        </div>
+
+        <div class="steps">
+          <article class="step">
+            <h3>Order the boards</h3>
+            <p>
+              Use each production archive for the matching PCB. Keep the input
+              hub and mouse pointer fabrication packages separate.
+            </p>
+          </article>
+          <article class="step">
+            <h3>Assemble surface-mount parts</h3>
+            <p>
+              Populate the controller-side passives, ESD arrays, sensor support
+              parts, and board-specific footprints from each BOM.
+            </p>
+          </article>
+          <article class="step">
+            <h3>Install connectors</h3>
+            <p>
+              Fit the USB/controller module, RJ45 jacks, pedal jacks, battery
+              or auxiliary connectors, and any test headers used for bring-up.
+            </p>
+          </article>
+          <article class="step">
+            <h3>Mount sensors</h3>
+            <p>
+              Place the AS5600 near the scroll wheel magnet and mount the
+              PMW3610 sensor board in the pointer module at the intended height.
+            </p>
+          </article>
+          <article class="step">
+            <h3>Wire the pointer link</h3>
+            <p>
+              Connect the input hub and pointer module with the RJ45 cable,
+              preserving the non-Ethernet ClickTapToe pinout.
+            </p>
+          </article>
+          <article class="step">
+            <h3>Flash and test</h3>
+            <p>
+              Flash the XIAO BLE with the ClickTapToe ZMK build, then verify
+              pedal clicks, scroll movement, and PMW3610 pointer response.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="pinout">
+        <div class="section-heading">
+          <div>
+            <h2>RJ45 Pointer Pinout</h2>
+          </div>
+          <p>
+            The RJ45 connector is used as a ClickTapToe sensor cable, not as an
+            Ethernet connection.
+          </p>
+        </div>
+
+        <div class="pinout">
+          <table>
+            <thead>
+              <tr>
+                <th>RJ45 pin</th>
+                <th>Signal</th>
+                <th>Input hub side</th>
+                <th>Mouse pointer side</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td><code>VIN</code> / <code>3V3</code></td>
+                <td>3.3 V sensor power</td>
+                <td>Sensor board input power</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td><code>GND</code></td>
+                <td>Ground</td>
+                <td>Ground return</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td><code>SCLK</code></td>
+                <td>PMW3610 SPI clock</td>
+                <td>PMW3610 SPI clock</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td><code>SDIO</code></td>
+                <td>Bidirectional SPI data</td>
+                <td>Bidirectional SPI data</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td><code>nCS</code></td>
+                <td>PMW3610 chip select</td>
+                <td>PMW3610 chip select</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td><code>GND</code></td>
+                <td>Ground</td>
+                <td>Ground return paired with <code>SCLK</code></td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td><code>MOTION</code></td>
+                <td>PMW3610 motion interrupt</td>
+                <td>Active-low PMW3610 motion output</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td><code>nRESET</code></td>
+                <td>Reset routed to XIAO <code>D6</code></td>
+                <td>Reset routed through installed link</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="notes">
+          <article class="note warning">
+            <h3>Next hardware improvement</h3>
+            <p>
+              For the next input hub PCB revision, add optional 0 ohm jumpers
+              from each pedal jack normal contact to <code>GND</code>. Populate
+              them for normally closed Yamaha-style pedals so unplugged jacks
+              stay idle.
+            </p>
+          </article>
+          <article class="note">
+            <h3>Firmware target</h3>
+            <p>
+              The active firmware target is <code>xiao_ble//zmk</code> with the
+              <code>clicktaptoe</code> shield. The current build uses USB HID
+              mouse output with Bluetooth disabled.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <span>ClickTapToe hardware documentation</span>
+        <span><a href="README.md">Repository README</a> · <a href="HARDWARE.md">Hardware notes</a></span>
+      </div>
+    </footer>
+  </body>
+</html>

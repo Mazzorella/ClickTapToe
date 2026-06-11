@@ -25,6 +25,8 @@ ClickTapToe is built from two custom electronics modules plus external pedals:
 - The pedals are premade external pedals connected to the input hub so higher-quality parts can be used and the project is easier to reproduce.
 
 See [HARDWARE.md](HARDWARE.md) for the current pin map and hardware notes.
+For a public-facing hardware overview with embedded board previews, open the
+[ClickTapToe Hardware Viewer](https://mazzorella.github.io/ClickTapToe/).
 
 | Board | Source | KiCanvas preview |
 | --- | --- | --- |
