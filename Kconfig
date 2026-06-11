@@ -18,3 +18,39 @@ module-str = CLICKTAPTOE_AS5600_SCROLL
 source "${ZEPHYR_BASE}/subsys/logging/Kconfig.template.log_config"
 
 endif
+
+menuconfig CLICKTAPTOE_STATUS_LED
+    bool "ClickTapToe onboard status LED"
+    default y
+    depends on GPIO
+    help
+      Use the XIAO BLE onboard RGB LED to report ClickTapToe firmware health
+      and local input activity.
+
+if CLICKTAPTOE_STATUS_LED
+
+config CLICKTAPTOE_STATUS_LED_INIT_PRIORITY
+    int "ClickTapToe status LED initialization priority"
+    default APPLICATION_INIT_PRIORITY
+
+config CLICKTAPTOE_STATUS_LED_STARTUP_DELAY_MS
+    int "ClickTapToe status LED startup check delay in milliseconds"
+    default 750
+
+config CLICKTAPTOE_STATUS_LED_HEALTH_CHECK_MS
+    int "ClickTapToe status LED health check interval in milliseconds"
+    default 1000
+
+config CLICKTAPTOE_STATUS_LED_ERROR_BLINK_MS
+    int "ClickTapToe status LED error blink interval in milliseconds"
+    default 750
+
+config CLICKTAPTOE_STATUS_LED_ACTIVITY_PULSE_MS
+    int "ClickTapToe status LED activity pulse length in milliseconds"
+    default 100
+
+module = CLICKTAPTOE_STATUS_LED
+module-str = CLICKTAPTOE_STATUS_LED
+source "${ZEPHYR_BASE}/subsys/logging/Kconfig.template.log_config"
+
+endif

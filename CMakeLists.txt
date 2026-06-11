@@ -1,3 +1,4 @@
 zephyr_library()
 
 zephyr_library_sources_ifdef(CONFIG_CLICKTAPTOE_AS5600_SCROLL src/as5600_scroll.c)
+zephyr_library_sources_ifdef(CONFIG_CLICKTAPTOE_STATUS_LED src/status_led.c)
