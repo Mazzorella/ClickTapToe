@@ -10,7 +10,9 @@ This file tracks the hardware assumptions used by the firmware.
 
 ## Current Pedal Inputs
 
-The current firmware uses direct GPIO inputs. Pedals short the signal pin to `GND`, so the firmware enables internal pull-ups and treats the inputs as active-low.
+The current firmware uses direct GPIO inputs. Yamaha-style pedals short the
+signal pin to `GND` at rest and open when pressed, so the firmware enables
+internal pull-ups and treats the inputs as active-high.
 
 | Function | XIAO pin | ZMK binding | Status |
 | --- | --- | --- | --- |
@@ -49,7 +51,7 @@ The current firmware supports PMW3610 pointing from the mouse pointer module ove
 | SPI data | `D10` / `P1.15` | `SDIO` | `4` / blue | Board routed |
 | Chip select | `D9` / `P1.14` | `nCS` | `5` / white-blue | Board routed |
 | Motion interrupt | `D7` / `P1.12` | `MOTION` | `7` / white-brown | Board routed |
-| Sensor reset | `D6` | `nRESET` | `8` / brown | Physically routed and reserved; not driven by firmware |
+| Sensor reset | `D6` | `nRESET` | `8` / brown | Board routed; current firmware uses SPI/software reset |
 
 The mouse pointer module connects to the input hub through an 8P8C modular jack
 used as a ClickTapToe sensor cable, not Ethernet. The cable pairing is:
@@ -62,7 +64,8 @@ used as a ClickTapToe sensor cable, not Ethernet. The cable pairing is:
 | Pair 4 | 7-8 | `MOTION` + `nRESET` |
 
 The PMW3610 orientation is corrected in firmware with `swap-xy` and `invert-y`.
-The mouse pointer board routes `nRESET` over RJ45, and the input hub reserves
-XIAO `D6` for it. The current PMW3610 firmware path does not drive that reset
-line yet, so bring-up still relies on SPI/software reset and the PMW3610
-power-up delay.
+The mouse pointer board routes `nRESET` over RJ45, and the input hub connects it
+to XIAO `D6`. The input hub also provides a 10k pull-up to `3V3` on the
+active-low `MOTION` interrupt line. This validated firmware build keeps the
+original PMW3610 driver behavior and relies on SPI/software reset; D6 is routed
+for a later hardware-reset recovery update.

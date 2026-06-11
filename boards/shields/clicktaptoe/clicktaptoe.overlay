@@ -13,12 +13,12 @@
         debounce-press-ms = <5>;
         debounce-release-ms = <5>;
 
-        /* Pedals short the pin to GND, so use pull-ups and active-low inputs. */
+        /* Yamaha-style pedals short to GND at rest and open when pressed. */
         input-gpios = <
-            &xiao_d 0 (GPIO_PULL_UP | GPIO_ACTIVE_LOW) /* D0 */
-            &xiao_d 1 (GPIO_PULL_UP | GPIO_ACTIVE_LOW) /* D1 */
-            &xiao_d 2 (GPIO_PULL_UP | GPIO_ACTIVE_LOW) /* D2 / future footswitch/TTS/spare */
-            &xiao_d 3 (GPIO_PULL_UP | GPIO_ACTIVE_LOW) /* D3 / future footswitch/TTS/spare */
+            &xiao_d 0 (GPIO_PULL_UP | GPIO_ACTIVE_HIGH) /* D0 */
+            &xiao_d 1 (GPIO_PULL_UP | GPIO_ACTIVE_HIGH) /* D1 */
+            &xiao_d 2 (GPIO_PULL_UP | GPIO_ACTIVE_HIGH) /* D2 / future footswitch/TTS/spare */
+            &xiao_d 3 (GPIO_PULL_UP | GPIO_ACTIVE_HIGH) /* D3 / future footswitch/TTS/spare */
         >;
     };
 
@@ -48,7 +48,7 @@
     };
 };
 
-/* D6 is routed to PMW3610 nRESET; firmware currently relies on SPI/software reset. */
+/* D6 is routed to PMW3610 nRESET; this diagnostic firmware uses the original SPI reset path. */
 
 &xiao_i2c {
     status = "okay";
