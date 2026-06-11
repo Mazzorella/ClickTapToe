@@ -13,11 +13,11 @@ Kconfig* linguist-language=C
 
 # Show the hardware source in GitHub's language bar.
 *.kicad_pcb linguist-detectable
-*.kicad_mod linguist-detectable
 *.kicad_sch linguist-detectable
-*.kicad_sym linguist-detectable
 
 # Keep generated preview/export assets from dominating the language bar.
+*.kicad_mod linguist-vendored
+*.kicad_sym linguist-vendored
 docs/assets/*.svg linguist-generated
 hardware/**/kicad/assets/* linguist-generated
 hardware/**/kicad/3dmodels/* linguist-generated
