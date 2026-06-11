@@ -4,7 +4,8 @@ Thumbs.db
 
 # Local build outputs and external workspaces
 build/
-firmware/
+firmware/*
+!firmware/clicktaptoe_xiao_usb_zmk.uf2
 .west/
 zephyr/*
 !zephyr/module.yml

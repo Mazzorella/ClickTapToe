@@ -14,7 +14,7 @@ The current firmware supports USB mouse clicks from external pedals, USB vertica
 - Pointer movement from the PMW3610 sensor in the mouse pointer module
 - `D2` and `D3` remain spare/test inputs and are not exposed as production pedal jacks on the current input hub PCB
 
-PMW3610 pointing support is included in the v0.3.0 firmware work.
+PMW3610 pointing support is active for the current firmware target.
 
 ## Hardware Overview
 
@@ -121,7 +121,7 @@ After that, run the build commands from this repository:
 make build
 ```
 
-To build and copy the generated UF2 into this repository's ignored `firmware/` directory:
+To build and copy the generated UF2 into this repository's `firmware/` directory:
 
 ```sh
 make uf2
