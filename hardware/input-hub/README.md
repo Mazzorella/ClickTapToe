@@ -62,6 +62,16 @@ has a 10k pull-up to `3V3` on that line.
 `nRESET` is present in the cable on RJ45 pin 8 and is driven by firmware on XIAO
 `D6` during PMW3610 initialization and retry.
 
+## Online Review
+
+`kicanvas.html` embeds the schematic and PCB in KiCanvas for browser-based
+review. If GitHub Pages is enabled from the repository root, the input hub
+viewer is available at:
+
+```text
+https://mazzorella.github.io/ClickTapToe/hardware/input-hub/kicanvas.html
+```
+
 ## Planned Layout
 
 - `kicad/` for KiCad project source files

@@ -26,6 +26,11 @@ ClickTapToe is built from two custom electronics modules plus external pedals:
 
 See [HARDWARE.md](HARDWARE.md) for the current pin map and hardware notes.
 
+| Board | Source | KiCanvas preview |
+| --- | --- | --- |
+| Input hub | [hardware/input-hub/](hardware/input-hub/) | [Open preview](https://mazzorella.github.io/ClickTapToe/hardware/input-hub/kicanvas.html) |
+| Mouse pointer | [hardware/mouse-pointer/](hardware/mouse-pointer/) | [Open preview](https://mazzorella.github.io/ClickTapToe/hardware/mouse-pointer/kicanvas.html) |
+
 ## Repository Layout
 
 - `.github/workflows/build.yml` runs the upstream ZMK user-config build workflow.
@@ -34,8 +39,7 @@ See [HARDWARE.md](HARDWARE.md) for the current pin map and hardware notes.
 - `zephyr/module.yml` declares this repository as the `zmk-keyboard-clicktaptoe` module and exposes its board, devicetree binding, Kconfig, and driver files.
 - `boards/shields/clicktaptoe/` contains the ClickTapToe shield definition, overlay, metadata, and default keymap.
 - `Makefile` wraps the local `west build` command for Docker/devcontainer use.
-- `hardware/input-hub/` is reserved for the controller, scroll wheel, pedal jack, and RJ45 hub PCB.
-- `hardware/mouse-pointer/` is reserved for the PMW3610 mouse pointer PCB.
+- `hardware/` contains the input hub and mouse pointer KiCad source files.
 - `docs/` is reserved for assembly, usage, and release documentation.
 
 ## Build Target
