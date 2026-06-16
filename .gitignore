@@ -67,3 +67,9 @@ hardware/**/production/*
 !hardware/mouse-pointer/kicad/production/
 !hardware/mouse-pointer/kicad/production/*
 hardware/mouse-pointer/kicad/production/backups/
+
+# Release-ready input hub fabrication outputs
+!hardware/input-hub/kicad/production/
+!hardware/input-hub/kicad/production/*
+hardware/input-hub/kicad/production/backups/
+hardware/input-hub/kicad/production/.DS_Store
