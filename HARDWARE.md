@@ -14,11 +14,10 @@ The current firmware uses direct GPIO inputs. Yamaha-style pedals short the
 signal pin to `GND` at rest and open when pressed, so the firmware enables
 internal pull-ups and treats the inputs as active-high.
 
-For the next input hub PCB revision, add an optional 0 ohm jumper from each
-pedal jack's tip-normal contact to `GND`. Populate this jumper for normally
-closed Yamaha-style pedals so an unplugged jack is forced idle instead of
-looking like a pressed pedal. Leave it DNP for normally open pedals and use the
-matching active-low firmware polarity.
+The current input hub PCB has two optional 0 ohm jumpers, `JP1` and `JP2`,
+that connect each pedal jack's tip-normal contact to `GND`. Populate them for
+normally closed Yamaha-style pedals so unplugged jacks stay idle. Leave them
+unpopulated for normally open pedals and use matching active-low firmware.
 
 Known jack normal contacts:
 

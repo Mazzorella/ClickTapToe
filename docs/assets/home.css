@@ -1,0 +1,368 @@
+.home-main {
+  padding-block: clamp(1.75rem, 5vw, 4.5rem) 3rem;
+}
+
+.hero {
+  display: grid;
+  align-items: center;
+  gap: clamp(1.5rem, 5vw, 4rem);
+}
+
+.hero h1 {
+  max-width: 11ch;
+  font-size: clamp(3.2rem, 6.8vw, 6.1rem);
+  letter-spacing: -0.055em;
+}
+
+.hero-emphasis {
+  color: var(--accent-strong);
+  background: linear-gradient(transparent 64%, var(--butter) 64% 92%, transparent 92%);
+  white-space: nowrap;
+}
+
+.lede {
+  max-width: 42ch;
+  margin: 1.2rem 0 0;
+  color: var(--muted);
+  font-size: clamp(1.12rem, 2.1vw, 1.38rem);
+}
+
+.intro-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.25rem;
+}
+
+.hero-photos {
+  position: relative;
+  isolation: isolate;
+  padding: clamp(0.9rem, 3vw, 1.9rem);
+  border: 1px solid #eacb82;
+  border-radius: clamp(1.25rem, 3vw, 2rem);
+  background: var(--butter);
+}
+
+.hero-photos::before,
+.hero-photos::after {
+  position: absolute;
+  z-index: -1;
+  width: 4.2rem;
+  height: 4.2rem;
+  border-radius: 50%;
+  content: "";
+}
+
+.hero-photos::before {
+  top: 0.9rem;
+  right: 0.85rem;
+  background: var(--peach);
+}
+
+.hero-photos::after {
+  bottom: 0.7rem;
+  left: 1.1rem;
+  background: radial-gradient(circle, var(--accent) 1px, transparent 1.6px) 0 0 / 0.6rem 0.6rem;
+}
+
+.hero-photo {
+  position: relative;
+  margin: 0;
+  padding: 0.4rem 0.4rem 0.3rem;
+  border: 1px solid var(--line);
+  border-radius: 0.85rem;
+  background: var(--panel);
+  box-shadow: 0 0.4rem 0 rgb(91 55 48 / 0.13);
+}
+
+.hero-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.55rem;
+}
+
+.hero-photo figcaption {
+  padding: 0.15rem 0.35rem;
+  font-family: var(--display);
+  font-size: 0.92rem;
+  font-weight: 800;
+}
+
+.hub-photo {
+  width: 83%;
+  transform: rotate(-3deg);
+}
+
+.pointer-photo {
+  width: 63%;
+  margin: -8% 0 0 auto;
+  transform: rotate(4deg);
+}
+
+.home-trail {
+  margin-top: clamp(1.5rem, 4vw, 3rem);
+}
+
+.how-section,
+.guide-summary {
+  margin-top: clamp(1.5rem, 4vw, 2.8rem);
+}
+
+.home-main h2 {
+  font-size: clamp(1.8rem, 3.6vw, 2.7rem);
+  letter-spacing: -0.025em;
+}
+
+.home-main h3 {
+  font-size: 1.24rem;
+}
+
+.controls-grid,
+.image-grid,
+.viewer-grid,
+.downloads,
+.notes {
+  display: grid;
+  gap: 1rem;
+}
+
+.controls-grid {
+  margin-top: 1rem;
+}
+
+.control-card {
+  padding: 1.05rem 1.2rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--peach);
+}
+
+.control-card:nth-child(2) {
+  background: var(--butter);
+}
+
+.control-card:nth-child(3) {
+  background: var(--mint);
+}
+
+.control-card p,
+.guide-summary p {
+  margin: 0.4rem 0 0;
+}
+
+.guide-summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.9rem 2rem;
+  padding: clamp(1rem, 3vw, 1.6rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--lilac);
+}
+
+.guide-summary p {
+  max-width: 62ch;
+}
+
+.hardware {
+  margin-top: clamp(2.5rem, 6vw, 4.25rem);
+  padding-top: clamp(1.25rem, 3vw, 2.4rem);
+  border-top: 1px solid var(--line-strong);
+}
+
+.hardware-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.hardware-nav .button {
+  min-height: 40px;
+  font-size: 0.94rem;
+}
+
+.hardware section {
+  margin-top: 2.35rem;
+}
+
+.section-heading {
+  margin-bottom: 0.95rem;
+}
+
+.section-heading p {
+  max-width: 65ch;
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+}
+
+.board-image,
+.viewer,
+.download-card,
+.note,
+.pinout,
+.bom-table {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.board-image,
+.download-card,
+.note {
+  padding: 1rem;
+}
+
+.board-image {
+  margin: 0;
+}
+
+.board-image img {
+  display: block;
+  width: 100%;
+  height: clamp(10rem, 22vw, 16rem);
+  object-fit: contain;
+  border-radius: 0.65rem;
+  background: #f5eee9;
+}
+
+.board-image figcaption {
+  margin-top: 0.45rem;
+  font-family: var(--display);
+  font-weight: 800;
+}
+
+.viewer {
+  overflow: hidden;
+}
+
+.viewer-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem 1rem;
+  padding: 0.85rem;
+}
+
+.viewer-header p,
+.download-card p,
+.note p {
+  margin: 0.4rem 0 0;
+  color: var(--muted);
+}
+
+.viewer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.viewer-actions .button {
+  padding-inline: 0.65rem;
+  font-size: 0.9rem;
+}
+
+.viewer iframe {
+  display: block;
+  width: 100%;
+  height: clamp(20rem, 56vh, 34rem);
+  border: 0;
+  border-top: 1px solid var(--line);
+  background: white;
+}
+
+.link-list {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0.9rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.link-list a {
+  display: block;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 0.6rem;
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.link-list a:hover {
+  border-color: var(--line-strong);
+  background: var(--peach);
+}
+
+.bom-toolbar {
+  margin-bottom: 0.8rem;
+}
+
+.pinout,
+.bom-table {
+  overflow-x: auto;
+}
+
+.hardware table {
+  width: 100%;
+  min-width: 42rem;
+  border-collapse: collapse;
+}
+
+.bom-table table {
+  min-width: 52rem;
+}
+
+.hardware th,
+.hardware td {
+  padding: 0.65rem 0.8rem;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.hardware th {
+  background: var(--peach);
+}
+
+.hardware tr:last-child td {
+  border-bottom: 0;
+}
+
+.qty {
+  font-weight: 700;
+}
+
+.hardware code {
+  padding: 0.08rem 0.24rem;
+  border-radius: 0.25rem;
+  background: #f4ece7;
+  font-size: 0.9em;
+}
+
+.note.warning {
+  background: var(--butter);
+}
+
+@media (min-width: 40rem) {
+  .controls-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .image-grid,
+  .viewer-grid,
+  .downloads,
+  .notes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 52rem) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+  }
+}

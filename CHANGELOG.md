@@ -22,13 +22,15 @@ The format is based on Keep a Changelog, and this project uses semantic versioni
   PMW3610 power, SPI, motion interrupt, and reset routing.
 - Add ESD protection, alternate pedal jack footprints, updated connector
   layout, silkscreen artwork, and production output refinements.
-- Document the next input hub pedal jack normal-contact grounding improvement.
+- Add optional pedal jack normal-contact grounding jumpers to the input hub
+  board and update its fabrication downloads.
 
 ### Documentation
 
 - Add the public hardware viewer page with board images, embedded KiCanvas
-  previews, fabrication downloads, a combined electronics BOM, assembly
-  guidance, and the RJ45 pinout.
+  previews, fabrication downloads, a combined electronics BOM, and the RJ45
+  pinout.
+- Add a photo guide for assembling the hub and connecting the slipper.
 - Add follow-up notes for the deferred PMW3610 reset-retry driver stash and the
   stashed XIAO battery access footprint.
 

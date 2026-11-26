@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A photo guide to assembling the ClickTapToe scroll hub and connecting its slipper pointer.">
+    <meta name="theme-color" content="#fff6e7">
+    <title>ClickTapToe Hub Assembly Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700&amp;family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&amp;display=swap">
+    <link rel="stylesheet" href="assets/site.css?v=warm-trail">
+    <link rel="stylesheet" href="assets/hub-assembly.css?v=warm-trail">
+    <script src="assets/site.js?v=warm-trail" defer></script>
+    <script src="assets/hub-assembly.js?v=slipper-crop" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <nav class="page-shell site-nav" aria-label="Project navigation">
+        <a class="wordmark" href="../index.html">
+          <span class="brand-mark" aria-hidden="true"><span class="mouse-mark"><span class="mouse-body"></span></span></span>
+          ClickTapToe
+        </a>
+        <div class="navlinks">
+          <a href="hub-assembly.html" aria-current="page">Assembly guide</a>
+          <a href="../index.html#hardware">Hardware</a>
+          <a href="https://github.com/Mazzorella/ClickTapToe">GitHub</a>
+        </div>
+      </nav>
+    </header>
+    <main class="page-shell guide-main" id="main-content">
+      <div class="guide-overview">
+        <div>
+          <header class="intro">
+            <h1>Assemble the ClickTapToe hub</h1>
+            <p>The enclosure and wheel STEP files are being revised.</p>
+          </header>
+
+          <section class="equipment" aria-labelledby="parts">
+            <h2 id="parts">Parts</h2>
+            <ul>
+              <li>Printed hub body, cover, and wheel. Shaft, two 608RS bearings, and a diametrically magnetized magnet.</li>
+              <li>Populated <a href="../index.html#files">hub board</a>, <a href="https://www.adafruit.com/product/6357">AS5600 magnetic sensor</a>, four spacers, and a STEMMA QT / Qwiic cable with 4-pin JST-SH plugs at both ends.</li>
+              <li>Heat-set inserts, mounting screws, wheel set screw, two ¼-inch TS jack nuts, and optional ½ oz tire weights.</li>
+              <li>Assembled slipper, straight-through RJ45 cable, two click pedals, and a USB-C data cable.</li>
+            </ul>
+          </section>
+
+          <section class="equipment" aria-labelledby="tools">
+            <h2 id="tools">Tools</h2>
+            <p>Soldering iron with an insert tip, 1.5 mm and 2.5 mm hex drivers, and a wrench for the jack nuts.</p>
+          </section>
+        </div>
+
+        <nav class="contents" id="assembly-steps" aria-label="Assembly steps">
+          <h2>Steps</h2>
+          <ol>
+            <li><a href="#bearings">Install the bearings</a></li>
+            <li><a href="#board-inserts">Controller board inserts</a></li>
+            <li><a href="#sensor-inserts">Magnetic sensor inserts</a></li>
+            <li><a href="#cover-inserts">Rear cover inserts</a></li>
+            <li><a href="#wheel-insert">Scroll wheel insert</a></li>
+            <li><a href="#wheel">Wheel and shaft</a></li>
+            <li><a href="#sensor">Mount the magnetic sensor</a></li>
+            <li><a href="#hub-board">Mount the controller board</a></li>
+            <li><a href="#sensor-wiring">Connect the sensor cable</a></li>
+            <li><a href="#weights">Add the tire weights</a></li>
+            <li><a href="#cover">Install the rear cover</a></li>
+            <li><a href="#jack-nuts">Install the TS jack nuts</a></li>
+            <li><a href="#slipper">Connect and test the slipper</a></li>
+          </ol>
+        </nav>
+      </div>
+
+      <div class="mouse-trail guide-trail" data-mouse-trail aria-hidden="true">
+        <span class="mouse-mark trail-mouse following"><span class="mouse-body"></span></span>
+        <span class="mouse-mark trail-mouse"><span class="mouse-body"></span></span>
+      </div>
+
+      <section class="step" aria-labelledby="bearings">
+        <h2 id="bearings"><span class="step-number">Step 1</span> Install the two bearings</h2>
+        <div class="step-body">
+          <div class="step-photos" data-gallery>
+            <figure>
+              <img src="assets/assembly/01a-bearing-in-wheel-slot.jpg" alt="First bearing seated in the round recess visible in the scroll wheel slot" width="1400" height="788" loading="lazy">
+              <figcaption>Seat the first bearing in the recess you can see from above the hub.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/assembly/01b-bearing-at-electronics-bay.jpg" alt="Second bearing visible through the shaft opening on the electronics bay wall" width="1400" height="788" loading="lazy">
+              <figcaption>The second bearing lines up with the shaft opening in the electronics bay.</figcaption>
+            </figure>
+          </div>
+          <ul class="instructions">
+            <li>Use two <strong>608RS sealed ball bearings</strong>. Each has an 8 mm inner diameter, a 22 mm outer diameter, and a 7 mm width.</li>
+            <li>Find the two round bearing seats at the ends of the scroll wheel slot. One is visible from above, and the other lines up with the opening in the wall of the electronics bay.</li>
+            <li>Press on the outer ring of each bearing to seat it squarely in its recess.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="step" aria-labelledby="board-inserts">
+        <h2 id="board-inserts"><span class="step-number">Step 2</span> Install the controller board inserts</h2>
+        <div class="step-body">
+          <div class="step-photos" data-gallery>
+            <figure>
+              <img src="assets/assembly/02a-empty-electronics-bay.jpg" alt="Front view into the empty bay with two raised mounting posts on each side" width="1400" height="788" loading="lazy">
+              <figcaption>Find the four raised posts on the floor of the bay.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/assembly/02b-board-insert-closeup.jpg" alt="Close view of the first insert at the left corner and more inserts on the bench" width="1400" height="788" loading="lazy">
+              <figcaption>Check that the insert sits straight and level with the top of the post.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/assembly/02c-press-in-board-insert.jpg" alt="Heated tip at the front right mounting post while a hand steadies the housing" width="1400" height="788" loading="lazy">
+              <figcaption>Steady the housing while pressing in the next insert.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/assembly/02d-three-board-inserts.jpg" alt="Three brass inserts in the electronics bay with one rear mounting post still empty" width="1400" height="788" loading="lazy">
+              <figcaption>Continue with the posts farther inside the bay.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/assembly/02e-four-board-inserts.jpg" alt="Four brass inserts seated in the raised mounting posts" width="1400" height="788" loading="lazy">
+              <figcaption>The floor has four installed inserts, one for each board screw.</figcaption>
+            </figure>
+          </div>
+          <ul class="instructions">
+            <li>Set the hub body down with the electronics bay facing you. Find the four raised mounting posts, one in each corner of the bay floor.</li>
+            <li>Fit one <strong>M3 × 4 × 5 mm</strong> heat-set insert in each post. Use the heated tip of a soldering iron to press each insert in straight until it is flush with the top of the post.</li>
+            <li>Let the plastic cool.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="step" aria-labelledby="sensor-inserts">
+        <h2 id="sensor-inserts"><span class="step-number">Step 3</span> Install the magnetic scroll sensor inserts</h2>
+        <div class="step-body">
+          <div class="step-photos" data-gallery>
+            <figure>
+              <img src="assets/assembly/03a-press-in-sensor-insert.jpg" alt="Heated tip pressing an insert into one of the holes beside the shaft opening" width="1400" height="788" loading="lazy">
+              <figcaption>Press the first insert into the inner wall.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/assembly/03b-first-sensor-insert.jpg" alt="One brass sensor insert fitted above and to the right of the shaft opening" width="1400" height="788" loading="lazy">
+              <figcaption>The first sensor insert is seated.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/assembly/03c-two-sensor-inserts.jpg" alt="Two brass sensor inserts in opposite corners around the shaft opening" width="1400" height="788" loading="lazy">
+              <figcaption>Repeat for the second mounting hole.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/assembly/03d-three-sensor-inserts.jpg" alt="Three inserts around the shaft opening with the fourth hole still empty" width="1400" height="788" loading="lazy">
+              <figcaption>Fit an insert in each of the four small holes.</figcaption>
+            </figure>
+          </div>
+          <ul class="instructions">
+            <li>Find the four small holes around the shaft opening on the inner wall. They line up with the magnetic scroll sensor's mounting holes.</li>
+            <li>Use the soldering iron to seat one <strong>M2 × 4 × 3.5 mm</strong> heat-set insert in each hole.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="step" aria-labelledby="cover-inserts">
+        <h2 id="cover-inserts"><span class="step-number">Step 4</span> Install the rear cover inserts</h2>
+        <div class="step-body">
+          <div class="step-photos" data-gallery>
+            <figure>
+              <img src="assets/assembly/04a-cover-insert-location.jpg" alt="Left cover insert seated at the lower end of the side rail, with the right rail hole still empty" width="1400" height="788" loading="lazy">
+              <figcaption>The cover inserts go in the ends of the side rails, next to the front posts.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/assembly/04b-press-in-cover-insert.jpg" alt="Heated tip fitting an insert at the bottom of the right side rail" width="1400" height="788" loading="lazy">
+              <figcaption>Fit a cover insert at the lower end of each rail.</figcaption>
+            </figure>
+          </div>
+          <ul class="instructions">
+            <li>Find the small hole at the lower end of each side rail.</li>
+            <li>Use the soldering iron to seat one <strong>M2 × 4 × 3.5 mm</strong> heat-set insert in each hole. These inserts hold the rear cover.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="step" aria-labelledby="wheel-insert">
+        <h2 id="wheel-insert"><span class="step-number">Step 5</span> Install the scroll wheel insert</h2>
+        <div class="step-body">
+          <div class="step-photos" data-gallery>
+            <figure>
+              <img src="assets/assembly/05a-scroll-wheel-insert.jpg" alt="Brass insert in the hole in the green scroll wheel tread" width="1400" height="788" loading="lazy">
+              <figcaption>The tread insert gives the shaft screw a place to thread in.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/assembly/05b-heat-set-wheel-insert.jpg" alt="Heated tip at the brass insert in the edge of the scroll wheel" width="1400" height="788" loading="lazy">
+              <figcaption>Seat the insert in the tread before fitting the wheel.</figcaption>
+            </figure>
+          </div>
+          <ul class="instructions">
+            <li>Find the small hole in the tread of the scroll wheel.</li>
+            <li>Heat-set an <strong>M3 × 4 × 5 mm</strong> insert into the tread. Press it in straight until it reaches the bottom of the hole, then let the plastic cool.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="step" aria-labelledby="wheel">
+        <h2 id="wheel"><span class="step-number">Step 6</span> Install the scroll wheel and shaft</h2>
+        <div class="step-body">
+          <div class="step-photos" data-gallery>
+            <figure>
+              <img src="assets/assembly/06a-line-up-wheel-and-shaft.jpg" alt="Wheel held above the slot and shaft lined up with the inner wall opening" width="1400" height="788" loading="lazy">
+              <figcaption>Line up the wheel bore with the shaft supports.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/assembly/06b-start-wheel-shaft.jpg" alt="Wheel seated in the slot while the shaft is started from the electronics bay" width="1400" height="788" loading="lazy">
+              <figcaption>Feed the shaft into the wheel from the electronics bay.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/assembly/06c-seat-wheel-shaft.jpg" alt="Hands steadying the scroll wheel and pushing the shaft into place" width="1400" height="788" loading="lazy">
+              <figcaption>Push the shaft through the wheel and into the opposite support.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/assembly/06d-seated-shaft.jpg" alt="Installed scroll wheel with the round sensor end of the shaft visible inside the bay" width="1400" height="788" loading="lazy">
+              <figcaption>The end of the shaft faces the four sensor mounting holes.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/assembly/06e-start-wheel-screw.jpg" alt="Socket-head screw started in the tread at the top of the installed wheel" width="1400" height="788" loading="lazy">
+              <figcaption>Start the set screw in the tread insert.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/assembly/06f-secure-wheel-to-shaft.jpg" alt="Hex driver tightening the screw in the top of the wheel" width="1400" height="788" loading="lazy">
+              <figcaption>Tighten the set screw until the wheel grips the shaft.</figcaption>
+            </figure>
+          </div>
+          <ul class="instructions">
+            <li>Lower the wheel into the slot and line up its center hole with both bearings. Slide the shaft in from the electronics bay, through the wheel, and into the opposite bearing.</li>
+            <li>Center the wheel in the slot. Thread the <strong>set screw</strong> (an M3 × 20 mm hex socket head cap screw) into the tread insert. Tighten it with a 2.5 mm hex driver until it holds the wheel on the shaft.</li>
+            <li>Turn the wheel by hand to check that it spins freely with the screw head clear of the enclosure.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="step" aria-labelledby="sensor">
+        <h2 id="sensor"><span class="step-number">Step 7</span> Mount the magnetic scroll sensor</h2>
+        <div class="step-body">
+          <div class="step-photos" data-gallery>
+            <figure>
+              <img src="assets/assembly/07a-scroll-sensor.jpg" alt="AS5600 board held near the round shaft end on the inner wall" width="1400" height="788" loading="lazy">
+              <figcaption>The sensor mounts on the wall, directly opposite the shaft magnet.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/assembly/07b-sensor-spacers.jpg" alt="Back of the AS5600 board with four white spacers held next to the shaft end" width="1400" height="788" loading="lazy">
+              <figcaption>Fit a spacer at each of the four mounting holes.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/assembly/07c-mounted-scroll-sensor.jpg" alt="AS5600 board mounted over the shaft with white spacers visible behind it" width="1400" height="788" loading="lazy">
+              <figcaption>The spacers keep the sensor board clear of the rotating magnet.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/assembly/07d-check-wheel-clearance.jpg" alt="One hand turning the wheel while the other is near the mounted AS5600 board" width="1400" height="788" loading="lazy">
+              <figcaption>Turn the wheel and check that it moves freely with the sensor in place.</figcaption>
+            </figure>
+          </div>
+          <ul class="instructions">
+            <li>Center the diametrically magnetized magnet on the end of the shaft facing the electronics bay.</li>
+            <li>Place four spacers between the inner wall and the AS5600 board. Secure the board with four <strong>M2 × 8 mm hex socket head cap screws</strong>.</li>
+            <li>Check that the sensor is directly opposite the magnet and that the magnet can turn without touching the board.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="step" aria-labelledby="hub-board">
+        <h2 id="hub-board"><span class="step-number">Step 8</span> Install the controller board</h2>
+        <div class="step-body">
+          <div class="step-photos" data-gallery>
+            <figure>
+              <img src="assets/assembly/08a-position-hub-board.jpg" alt="Populated hub board placed on the floor of the bay while a driver tightens a screw" width="1400" height="788" loading="lazy">
+              <figcaption>Set the board on the four inserts with its connectors facing the opening.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/assembly/08b-secure-hub-board.jpg" alt="Hands holding the circuit board in position while a mounting screw is tightened" width="1400" height="788" loading="lazy">
+              <figcaption>Secure the board to the four mounting posts.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/assembly/08c-seated-hub-board.jpg" alt="Hub board seated in the enclosure below the AS5600 sensor" width="1400" height="788" loading="lazy">
+              <figcaption>Check that the USB-C, pedal, and slipper sockets face the rear.</figcaption>
+            </figure>
+          </div>
+          <ul class="instructions">
+            <li>With USB disconnected, place the populated input hub board on its four mounting posts so its ports align with the rear cover openings.</li>
+            <li>Secure the board to the posts with four <strong>M3 × 4 mm hex socket head cap screws</strong>.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="step" aria-labelledby="sensor-wiring">
+        <h2 id="sensor-wiring"><span class="step-number">Step 9</span> Wire the scroll sensor to the hub board</h2>
+        <div class="step-body">
+          <div class="step-photos" data-gallery>
+            <figure>
+              <img src="assets/assembly/09a-sensor-connector.jpg" alt="Four-wire plug lined up with the connector on the side of the scroll sensor" width="1400" height="788" loading="lazy">
+              <figcaption>Plug one end of the cable into the scroll sensor.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/assembly/09b-hub-sensor-connector.jpg" alt="Four-wire cable above the white J5 connector on the hub circuit board" width="1400" height="788" loading="lazy">
+              <figcaption>Plug the other end into J5 on the hub board.</figcaption>
+            </figure>
+          </div>
+          <ul class="instructions">
+            <li>With USB disconnected, plug one end of the <strong>STEMMA QT / Qwiic cable</strong> into the magnetic scroll sensor.</li>
+            <li>Plug the other end into the hub board socket marked <strong>J5</strong>. Each plug only fits its socket one way.</li>
+            <li>Route the cable away from the spinning wheel and the cover edges.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="step" aria-labelledby="weights">
+        <h2 id="weights"><span class="step-number">Step 10</span> Add the tire weights</h2>
+        <div class="step-body">
+          <div class="step-photos" data-gallery>
+            <figure>
+              <img src="assets/assembly/10a-separate-adhesive-weights.jpg" alt="Hands separating a small rectangular weight from the strip" width="1400" height="788" loading="lazy">
+              <figcaption>Separate as many weights from the strip as you want to use.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/assembly/10b-place-weight-in-pocket.jpg" alt="Hand positioning an adhesive weight inside the right recessed pocket" width="1400" height="788" loading="lazy">
+              <figcaption>Lay each weight flat in its pocket.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/assembly/10c-weight-pockets.jpg" alt="Four adhesive weights in the two pockets in front of the wheel" width="1400" height="788" loading="lazy">
+              <figcaption>This build uses two weights in each pocket.</figcaption>
+            </figure>
+          </div>
+          <ul class="instructions">
+            <li>Add as many <strong>½ oz tire weights</strong> as you need to the two pockets next to the wheel to reach your desired weight.</li>
+            <li>Peel off the backing to stick the weights in place, or leave them loose so you can adjust the weight later.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="step" aria-labelledby="cover">
+        <h2 id="cover"><span class="step-number">Step 11</span> Install the rear cover</h2>
+        <div class="step-body">
+          <div class="step-photos" data-gallery>
+            <figure>
+              <img src="assets/assembly/11a-fit-rear-cover.jpg" alt="Curved cover being aligned with the open hub and its circuit board" width="1400" height="788" loading="lazy">
+              <figcaption>Guide the cover into the side rails while keeping the cable clear.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/assembly/11b-start-cover-screw.jpg" alt="Fingers placing a screw in the lower corner of the seated cover" width="1400" height="788" loading="lazy">
+              <figcaption>Check port alignment before tightening the first cover screw.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/assembly/11c-tighten-first-cover-screw.jpg" alt="Driver tightening the cover screw beside the right pedal port" width="1400" height="788" loading="lazy">
+              <figcaption>Tighten the cover screw at one end of the rear panel.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/assembly/11d-tighten-second-cover-screw.jpg" alt="Driver tightening the other cover screw next to the slipper socket" width="1400" height="788" loading="lazy">
+              <figcaption>Tighten the second screw at the opposite end of the panel.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/assembly/11e-rear-port-alignment.jpg" alt="Closer view of the rear panel with the four socket openings aligned" width="1400" height="788" loading="lazy">
+              <figcaption>Check that each plug will clear the edges of its opening.</figcaption>
+            </figure>
+          </div>
+          <ul class="instructions">
+            <li>Fit the curved rear cover into the side rails. Keep the sensor cable clear and center the four ports in their openings.</li>
+            <li>Install two <strong>M2 × 4 mm hex socket head cap screws</strong>, one at each lower corner of the rear panel.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="step" aria-labelledby="jack-nuts">
+        <h2 id="jack-nuts"><span class="step-number">Step 12</span> Install the TS jack nuts</h2>
+        <div class="step-body">
+          <div class="step-photos" data-gallery>
+            <figure>
+              <img src="assets/assembly/12a-fit-pedal-jack-nut.jpg" alt="Hand lining up a metal hex nut with a pedal jack" width="1400" height="788" loading="lazy">
+              <figcaption>Thread the nuts onto the exposed pedal jacks.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/assembly/12b-finished-hub-ports.jpg" alt="Closed hub with ports labeled Slipper, USB, L, and R and both pedal jack nuts in place" width="1400" height="788" loading="lazy">
+              <figcaption>The finished rear panel has four ports and two pedal jack nuts.</figcaption>
+            </figure>
+          </div>
+          <ul class="instructions">
+            <li>From outside the cover, thread a retaining nut onto each ¼-inch TS pedal jack marked <strong>L</strong> and <strong>R</strong>.</li>
+            <li>Tighten each nut until it is snug against the cover. Hold the jack steady so it does not twist.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="step" aria-labelledby="slipper">
+        <h2 id="slipper"><span class="step-number">Step 13</span> Connect the slipper and test</h2>
+        <div class="step-body">
+          <div class="step-photos" data-gallery>
+            <figure>
+              <img class="slipper-crop" src="assets/assembly/13-slipper-pointer.jpg" alt="Assembled black slipper pointer with a foot strap and an RJ45 socket on the front edge" width="788" height="1400" loading="lazy">
+              <figcaption>Plug the slipper cable into the socket on the edge of the assembled pointer.</figcaption>
+            </figure>
+          </div>
+          <ul class="instructions">
+            <li>With USB power disconnected, plug a short straight-through RJ45 cable into the hub port marked <strong>SLIPPER</strong> and into the matching port on the assembled slipper.</li>
+            <li>Plug normally closed click pedals into <strong>L</strong> and <strong>R</strong>, then connect the hub to the computer with a USB-C data cable. If the controller needs firmware, follow the <a href="https://github.com/Mazzorella/ClickTapToe#flashing">firmware flashing steps</a>.</li>
+            <li>In a browser window, check that the left pedal clicks and the right pedal opens a context menu. Turn the wheel in both directions to test scrolling, then slide the slipper to test pointer movement.</li>
+          </ul>
+        </div>
+      </section>
+      <p class="back-to-top"><a href="#assembly-steps">Back to assembly steps</a></p>
+    </main>
+
+    <footer class="site-footer">
+      <div class="page-shell footer-inner">
+        <strong>ClickTapToe</strong>
+        <div class="footer-links">
+          <a href="../index.html">Project homepage</a>
+          <a href="https://github.com/Mazzorella/ClickTapToe/blob/main/HARDWARE.md">Hardware notes</a>
+          <a href="https://github.com/Mazzorella/ClickTapToe">GitHub</a>
+        </div>
+      </div>
+    </footer>
+
+    <dialog class="photo-viewer" id="photo-viewer" aria-label="Expanded assembly photo">
+      <form method="dialog">
+        <button class="photo-button photo-viewer-close" type="submit" aria-label="Close expanded photo" autofocus>×</button>
+      </form>
+      <figure>
+        <figcaption></figcaption>
+      </figure>
+    </dialog>
+  </body>
+</html>

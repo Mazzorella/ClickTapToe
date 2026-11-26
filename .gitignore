@@ -2,6 +2,9 @@
 .DS_Store
 Thumbs.db
 
+# Full-resolution assembly photos and hardware-size reference shots
+/docs/assets/assembly/originals/
+
 # Local build outputs and external workspaces
 build/
 firmware/*

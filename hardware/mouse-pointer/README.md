@@ -58,8 +58,9 @@ The RJ45 connector is unshielded and is intended for hand installation. `J1` is
 also optional/test-only and is not assigned a JLCPCB part number in the
 production BOM.
 
-The current firmware handles `MOTION` on XIAO `D7` through RJ45 pin 7 and
-pulses `nRESET` on XIAO `D6` through RJ45 pin 8 before PMW3610 initialization.
+The current firmware handles `MOTION` on XIAO `D7` through RJ45 pin 7 and uses
+SPI reset for PMW3610 initialization. RJ45 pin 8 routes `nRESET` to XIAO `D6`
+for future hardware reset support.
 
 ## Online Review
 

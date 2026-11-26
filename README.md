@@ -4,6 +4,10 @@ ClickTapToe is a custom foot-operated mouse for people who need to reduce repeti
 
 This repository contains the firmware, hardware notes, and project documentation for ClickTapToe. The current firmware target is a Seeed Studio XIAO nRF52840 / XIAO BLE running as a USB HID mouse with ZMK. Bluetooth is disabled for the ClickTapToe firmware build.
 
+The [hub assembly photo guide](https://mazzorella.github.io/ClickTapToe/docs/hub-assembly.html)
+shows how to assemble the scroll wheel and hub, wire the sensor, and connect the
+finished slipper pointer. The enclosure and wheel STEP files are being revised.
+
 ## Current Status
 
 The current firmware supports USB mouse clicks from external pedals, USB vertical scrolling from the input hub scroll wheel, and pointer movement from the mouse pointer module:
@@ -21,12 +25,12 @@ PMW3610 pointing support is active for the current firmware target.
 ClickTapToe is built from two custom electronics modules plus external pedals:
 
 - The input hub contains the XIAO nRF52840 controller, USB connection, external pedal TS jacks, RJ45 pointer connection, and a large foot-operated scroll wheel coupled to an AS5600 magnetic angle sensor.
-- The mouse pointer module is shaped like a slipper, houses a PMW3610 pointing sensor, and connects to the input hub over RJ45 with a short Ethernet cable.
+- The mouse pointer module is shaped like a slipper, houses a PMW3610 pointing sensor, and connects to the input hub with a short straight-through RJ45 cable. The port carries sensor signals and power between the two units.
 - The pedals are premade external pedals connected to the input hub so higher-quality parts can be used and the project is easier to reproduce.
 
 See [HARDWARE.md](HARDWARE.md) for the current pin map and hardware notes.
 For a public-facing hardware overview with embedded board previews, open the
-[ClickTapToe Hardware Viewer](https://mazzorella.github.io/ClickTapToe/).
+[ClickTapToe project site](https://mazzorella.github.io/ClickTapToe/).
 
 | Board | Source | KiCanvas preview |
 | --- | --- | --- |
@@ -42,7 +46,7 @@ For a public-facing hardware overview with embedded board previews, open the
 - `boards/shields/clicktaptoe/` contains the ClickTapToe shield definition, overlay, metadata, and default keymap.
 - `Makefile` wraps the local `west build` command for Docker/devcontainer use.
 - `hardware/` contains the input hub and mouse pointer KiCad source files.
-- `docs/` is reserved for assembly, usage, and release documentation.
+- `docs/` contains the hub assembly guide, photos, and project documentation.
 
 ## Build Target
 
@@ -65,8 +69,8 @@ artifact-name: clicktaptoe_xiao_usb_zmk
 
 Use a safe desktop target for click testing, such as an empty Finder window or browser page.
 
-- Short physical `D0` to `GND`; the host should receive a left click.
-- Short physical `D1` to `GND`; the host should receive a right click.
+- Plug in normally closed pedals. Press and release the left and right pedals and check that each produces the matching click.
+- For a bare board GPIO test, hold `D0` or `D1` at `GND` to simulate an idle pedal. Open that connection to simulate a press, then reconnect it to simulate a release.
 - Rotate the AS5600 scroll wheel; the host should receive vertical scroll events.
 - Move the mouse pointer module over a surface; the host pointer should move smoothly in the same direction.
 - Test the PMW3610 once through the RJ45 cable path; pointer response should match the direct breadboard wiring test.

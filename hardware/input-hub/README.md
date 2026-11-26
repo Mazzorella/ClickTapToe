@@ -7,6 +7,11 @@ connects to the computer over USB, receives the external pedal TS jacks,
 connects to the mouse pointer board over RJ45, and interfaces with the AS5600
 scroll sensor.
 
+See the [hub assembly photo guide](https://mazzorella.github.io/ClickTapToe/docs/hub-assembly.html)
+for mounting the board, scroll wheel, and sensor in the enclosure. See the
+[hardware notes](../../HARDWARE.md#current-pedal-inputs) for the current pedal
+jumper settings.
+
 ## XIAO Pin Test Plan
 
 This validation plan keeps the existing click pedals on `D0`/`D1`, uses the
@@ -21,7 +26,7 @@ signals unchanged.
 | `D3` | Future footswitch / TTS / spare input | Test direct GPIO input, emits volume up |
 | `D4` | AS5600 I2C bus | Implemented as `&xiao_i2c` |
 | `D5` | AS5600 I2C bus | Implemented as `&xiao_i2c` |
-| `D6` | PMW3610 `nRESET` | Implemented as active-low hardware reset |
+| `D6` | PMW3610 `nRESET` | Routed on the board. Firmware uses SPI reset. |
 | `D7` | PMW3610 `MOTION` | Implemented as PMW3610 interrupt |
 | `D8` / `P1.13` | PMW3610 `SCLK` | Implemented |
 | `D9` / `P1.14` | PMW3610 `nCS` | Implemented |
@@ -59,8 +64,8 @@ side. The mouse pointer board only adds a local 100 ohm series resistor on
 
 `MOTION` is active-low and is handled by firmware on XIAO `D7`; the board also
 has a 10k pull-up to `3V3` on that line.
-`nRESET` is present in the cable on RJ45 pin 8 and is driven by firmware on XIAO
-`D6` during PMW3610 initialization and retry.
+`nRESET` is routed from RJ45 pin 8 to XIAO `D6`. The current firmware initializes
+the PMW3610 through SPI reset.
 
 ## Online Review
 
