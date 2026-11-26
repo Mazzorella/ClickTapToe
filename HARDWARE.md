@@ -14,10 +14,15 @@ The current firmware uses direct GPIO inputs. Yamaha-style pedals short the
 signal pin to `GND` at rest and open when pressed, so the firmware enables
 internal pull-ups and treats the inputs as active-high.
 
-The current input hub PCB has two optional 0 ohm jumpers, `JP1` and `JP2`,
-that connect each pedal jack's tip-normal contact to `GND`. Populate them for
-normally closed Yamaha-style pedals so unplugged jacks stay idle. Leave them
-unpopulated for normally open pedals and use matching active-low firmware.
+Use normally closed pedals with the v0.4.0 USB firmware. Plug both pedals in
+before connecting the hub to the computer, since an open jack reads as a
+pressed pedal on the tested board.
+
+The input hub revision on `main` adds optional 0 ohm jumpers `JP1` and `JP2`
+from the pedal jacks' tip-normal contacts to `GND`. These are designed to keep
+unplugged jacks idle with normally closed pedals. The change is awaiting
+hardware validation. A normally open pedal setup leaves the jumpers
+unpopulated and requires matching active-low firmware.
 
 Known jack normal contacts:
 
@@ -46,10 +51,18 @@ mounted on the wheel shaft near the sensor.
 | AS5600 `VCC` | `3V3` | Board routed |
 | AS5600 `GND` | `GND` | Board routed |
 
-The AS5600 uses fixed I2C address `0x36`. ZMK is configured with
-`triggers-per-rotation = <24>` as the starting scroll sensitivity for bring-up;
-this should be tuned once the wheel, shaft, magnet, and sensor are mounted in
-their final positions.
+The AS5600 connects to `J5` on the hub using a STEMMA QT / Qwiic cable with
+4-pin JST-SH plugs at both ends. The connector pitch is 1.0 mm.
+
+| J5 pin | Signal |
+| --- | --- |
+| 1 | Ground |
+| 2 | 3.3 V power |
+| 3 | SDA |
+| 4 | SCL |
+
+The AS5600 uses fixed I2C address `0x36`. The current firmware sets
+`triggers-per-rotation = <24>` for the scroll wheel.
 
 ## Current Pointing Input
 

@@ -1,6 +1,9 @@
 # Input Hub Hardware
 
-This folder contains source files and notes for the ClickTapToe input hub PCB.
+This folder on `main` contains the input hub jumper revision, pending hardware
+validation. To build the tested v0.4.0 board, use the
+[v0.4.0 KiCad source](https://github.com/Mazzorella/ClickTapToe/tree/v0.4.0/hardware/input-hub/kicad)
+and [matching manufacturing files](https://mazzorella.github.io/ClickTapToe/docs/hardware.html#files).
 
 The input hub is the central electronics board. It hosts the XIAO nRF52840,
 connects to the computer over USB, receives the external pedal TS jacks,
@@ -12,13 +15,12 @@ for mounting the board, scroll wheel, and sensor in the enclosure. See the
 [hardware notes](../../HARDWARE.md#current-pedal-inputs) for the current pedal
 jumper settings.
 
-## XIAO Pin Test Plan
+## XIAO Pin Map
 
-This validation plan keeps the existing click pedals on `D0`/`D1`, uses the
-AS5600 scroll sensor on the `D4`/`D5` I2C bus, and leaves the PMW3610 SPI
-signals unchanged.
+The USB firmware uses `D0` and `D1` for the click pedals, `D4` and `D5` for
+the AS5600 scroll sensor, and SPI for the PMW3610 pointer.
 
-| XIAO pin | Signal plan | Firmware status |
+| XIAO pin | Signal | Firmware status |
 | --- | --- | --- |
 | `D0` | Left click pedal | Implemented |
 | `D1` | Right click pedal | Implemented |
@@ -69,15 +71,11 @@ the PMW3610 through SPI reset.
 
 ## Online Review
 
-`kicanvas.html` embeds the schematic and PCB in KiCanvas for browser-based
-review. If GitHub Pages is enabled from the repository root, the input hub
-viewer is available at:
+Open the [input hub KiCanvas viewer](https://mazzorella.github.io/ClickTapToe/hardware/input-hub/kicanvas.html)
+to inspect the tested v0.4.0 schematic and PCB in a browser.
 
-```text
-https://mazzorella.github.io/ClickTapToe/hardware/input-hub/kicanvas.html
-```
+## Jumper revision files
 
-## Planned Layout
-
-- `kicad/` for KiCad project source files
-- `kicad/production/` for generated Gerbers, drill files, BOMs, and placement files
+- [KiCad project source](kicad/)
+- [Fabrication and assembly files](kicad/production/), including Gerbers, drill
+  files, the bill of materials, and the placement file.

@@ -6,14 +6,15 @@
     <meta name="description" content="ClickTapToe is a foot-operated USB mouse with click pedals, a scroll wheel, and a slipper pointer.">
     <meta name="theme-color" content="#fff6e7">
     <title>ClickTapToe | Foot-operated mouse</title>
+    <link rel="icon" type="image/png" sizes="64x64" href="docs/assets/mouse-favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700&amp;family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&amp;display=swap">
-    <link rel="stylesheet" href="docs/assets/site.css?v=warm-trail">
-    <link rel="stylesheet" href="docs/assets/home.css?v=warm-trail">
-    <script src="docs/assets/site.js?v=warm-trail" defer></script>
+    <link rel="stylesheet" href="docs/assets/site.css?v=project-pages">
+    <link rel="stylesheet" href="docs/assets/home.css?v=project-pages">
+    <script src="docs/assets/site.js?v=project-pages" defer></script>
   </head>
-  <body>
+  <body data-hardware-page="docs/hardware.html">
     <a class="skip-link" href="#main-content">Skip to content</a>
     <header class="site-header">
       <nav class="page-shell site-nav" aria-label="Project navigation">
@@ -22,8 +23,9 @@
           ClickTapToe
         </a>
         <div class="navlinks">
-          <a href="docs/hub-assembly.html">Assembly guide</a>
-          <a href="#hardware">Hardware</a>
+          <a href="docs/hub-assembly.html">Assembly</a>
+          <a href="docs/maintenance.html">Maintenance</a>
+          <a href="docs/hardware.html">Hardware</a>
           <a href="https://github.com/Mazzorella/ClickTapToe">GitHub</a>
         </div>
       </nav>
@@ -44,8 +46,8 @@
         </div>
         <div class="hero-photos">
           <figure class="hero-photo hub-photo">
-            <img src="docs/assets/assembly/10c-weight-pockets.jpg" alt="Green scroll wheel mounted in the black ClickTapToe hub" width="1400" height="788">
-            <figcaption>Scroll hub</figcaption>
+            <img src="docs/assets/scroll-hub-cad.png" alt="CAD view of the enclosed black scroll hub with a green wheel" width="1802" height="1478">
+            <figcaption>Scroll hub (CAD)</figcaption>
           </figure>
           <figure class="hero-photo pointer-photo">
             <img class="slipper-crop" src="docs/assets/assembly/13-slipper-pointer.jpg" alt="Black slipper pointer with its foot strap and cable socket" width="788" height="1400">
@@ -54,9 +56,12 @@
         </div>
       </section>
 
-      <div class="page-shell mouse-trail home-trail" data-mouse-trail aria-hidden="true">
-        <span class="mouse-mark trail-mouse following"><span class="mouse-body"></span></span>
-        <span class="mouse-mark trail-mouse"><span class="mouse-body"></span></span>
+      <div class="page-shell mouse-trail home-trail" data-mouse-trail data-direction="right" aria-hidden="true">
+        <div class="mouse-lane">
+          <span class="mouse-mark trail-mouse following"><span class="mouse-body"></span></span>
+          <span class="mouse-mark trail-mouse"><span class="mouse-body"></span></span>
+        </div>
+        <span class="mouse-hole"></span>
       </div>
 
       <section class="page-shell how-section" id="how-it-works" aria-labelledby="controls-title">
@@ -85,374 +90,34 @@
         <a class="button primary" href="docs/hub-assembly.html">Open the photo guide <span aria-hidden="true">→</span></a>
       </section>
 
-      <div class="page-shell hardware" id="hardware">
-        <nav class="hardware-nav" aria-label="Hardware sections">
-          <a class="button" href="#boards">Circuit boards</a>
-          <a class="button" href="#files">Downloads</a>
-          <a class="button" href="#bom">Parts list</a>
-          <a class="button" href="#pinout">Wiring</a>
-        </nav>
-
-        <section id="boards">
-          <div class="section-heading">
-            <div>
-              <h2>Circuit boards</h2>
-            </div>
-            <p>
-              These top-side PCB images are exported from the KiCad board files
-              and load quickly for a first-pass visual check.
-            </p>
-          </div>
-
-          <div class="image-grid">
-            <figure class="board-image">
-              <img src="docs/assets/input-hub-board.svg" alt="Top-side PCB view of the ClickTapToe input hub board">
-              <figcaption>Input hub board</figcaption>
-            </figure>
-            <figure class="board-image">
-              <img src="docs/assets/mouse-pointer-board.svg" alt="Top-side PCB view of the ClickTapToe mouse pointer board">
-              <figcaption>Mouse pointer board</figcaption>
-            </figure>
-          </div>
-        </section>
-
-        <section id="interactive">
-          <div class="section-heading">
-            <div>
-              <h2>Interactive board previews</h2>
-            </div>
-            <p>
-              The embedded KiCanvas views load the schematic and PCB files
-              directly from the published repository for detailed inspection.
-            </p>
-          </div>
-
-          <div class="viewer-grid">
-            <article class="viewer">
-              <div class="viewer-header">
-                <div>
-                  <h3>Input hub</h3>
-                  <p>Controller, pedals, scroll sensor, USB, and RJ45 hub board.</p>
-                </div>
-                <div class="viewer-actions">
-                  <a class="button primary" href="hardware/input-hub/kicanvas.html">Full preview</a>
-                  <a class="button" href="https://github.com/Mazzorella/ClickTapToe/tree/main/hardware/input-hub#readme">Board notes</a>
-                </div>
-              </div>
-              <iframe
-                title="Input hub KiCanvas preview"
-                src="hardware/input-hub/kicanvas.html"
-                loading="lazy"
-              ></iframe>
-            </article>
-
-            <article class="viewer">
-              <div class="viewer-header">
-                <div>
-                  <h3>Mouse pointer</h3>
-                  <p>PMW3610 pointing sensor module with RJ45 cable interface.</p>
-                </div>
-                <div class="viewer-actions">
-                  <a class="button primary" href="hardware/mouse-pointer/kicanvas.html">Full preview</a>
-                  <a class="button" href="https://github.com/Mazzorella/ClickTapToe/tree/main/hardware/mouse-pointer#readme">Board notes</a>
-                </div>
-              </div>
-              <iframe
-                title="Mouse pointer KiCanvas preview"
-                src="hardware/mouse-pointer/kicanvas.html"
-                loading="lazy"
-              ></iframe>
-            </article>
-          </div>
-        </section>
-
-        <section id="files">
-          <div class="section-heading">
-            <div>
-              <h2>Fabrication and CAD files</h2>
-            </div>
-            <p>
-              Use the production archives for PCB fabrication and assembly. STEP
-              files are provided for connector and component fit checks.
-            </p>
-          </div>
-
-          <div class="downloads">
-            <article class="download-card">
-              <div>
-                <h3>Input hub</h3>
-                <p>XIAO controller board with pedal, scroll, USB, and RJ45 connections.</p>
-              </div>
-              <ul class="link-list">
-                <li><a href="hardware/input-hub/kicad/production/input_hub.zip">Production archive</a></li>
-                <li><a href="hardware/input-hub/kicad/production/bom.csv">BOM CSV</a></li>
-                <li><a href="hardware/input-hub/kicad/production/positions.csv">Placement CSV</a></li>
-                <li><a href="hardware/input-hub/kicad/3dmodels/102010448.step">XIAO module STEP</a></li>
-                <li><a href="hardware/input-hub/kicad/3dmodels/ACJMIH.step">1/4 inch jack STEP</a></li>
-                <li><a href="hardware/input-hub/kicad/3dmodels/AUDIO-TH_PJ-307.step">3.5 mm jack STEP</a></li>
-                <li><a href="hardware/input-hub/kicad/3dmodels/54602-908LFc.stp">RJ45 jack STEP</a></li>
-              </ul>
-            </article>
-
-            <article class="download-card">
-              <div>
-                <h3>Mouse pointer</h3>
-                <p>PMW3610 optical sensor board for the foot-operated pointer module.</p>
-              </div>
-              <ul class="link-list">
-                <li><a href="hardware/mouse-pointer/kicad/production/Mouse_Pointer_1.0.zip">Production archive</a></li>
-                <li><a href="hardware/mouse-pointer/kicad/production/bom.csv">BOM CSV</a></li>
-                <li><a href="hardware/mouse-pointer/kicad/production/positions.csv">Placement CSV</a></li>
-                <li><a href="hardware/mouse-pointer/kicad/3dmodels/PMW3610DM-SUDU.step">PMW3610 sensor STEP</a></li>
-                <li><a href="hardware/mouse-pointer/kicad/3dmodels/54602-908LFc.stp">RJ45 jack STEP</a></li>
-                <li><a href="hardware/mouse-pointer/kicad/3dmodels/TPD4E05U06DQAR.step">ESD array STEP</a></li>
-              </ul>
-            </article>
-          </div>
-        </section>
-
-        <section id="bom">
-          <div class="section-heading">
-            <div>
-              <h2>Electronics parts list</h2>
-            </div>
-            <p>
-              Combined quantities for one complete electronics set: one input hub
-              board plus one mouse pointer board. Mechanical enclosure parts,
-              pedals, cable, magnet, and other off-board items can be added later.
-            </p>
-          </div>
-
-          <div class="bom-toolbar">
-            <a class="button primary" href="docs/assets/clicktaptoe-electronics-bom.csv">Download CSV</a>
-          </div>
-
-          <div class="bom-table" role="region" aria-label="Electronics parts list table" tabindex="0">
-            <table>
-              <thead>
-                <tr>
-                  <th>Qty</th>
-                  <th>Value</th>
-                  <th>Footprint</th>
-                  <th>LCSC part</th>
-                  <th>Used on</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="qty">4</td>
-                  <td><code>1uF</code></td>
-                  <td>0603</td>
-                  <td><code>C15849</code></td>
-                  <td>Input hub C1 C3; mouse pointer C8 C9</td>
-                </tr>
-                <tr>
-                  <td class="qty">2</td>
-                  <td><code>10uF</code></td>
-                  <td>0805</td>
-                  <td><code>C15850</code></td>
-                  <td>Input hub C2; mouse pointer C6</td>
-                </tr>
-                <tr>
-                  <td class="qty">1</td>
-                  <td><code>1206L012WR</code></td>
-                  <td>1206</td>
-                  <td><code>C151160</code></td>
-                  <td>Input hub F1</td>
-                </tr>
-                <tr>
-                  <td class="qty">1</td>
-                  <td><code>B2B-PH-SM4-TB</code></td>
-                  <td>JST_PH_B2B-PH-SM4-TB_1x02-1MP_P2.00mm_Vertical</td>
-                  <td><code>C160352</code></td>
-                  <td>Input hub J11</td>
-                </tr>
-                <tr>
-                  <td class="qty">1</td>
-                  <td><code>BM04B-SRSS-TB_LF__SN_</code></td>
-                  <td>JST_BM04B-SRSS-TB_LF__SN_</td>
-                  <td><code>C160390</code></td>
-                  <td>Input hub J5</td>
-                </tr>
-                <tr>
-                  <td class="qty">2</td>
-                  <td><code>330</code></td>
-                  <td>0603</td>
-                  <td><code>C23138</code></td>
-                  <td>Input hub R1 R2</td>
-                </tr>
-                <tr>
-                  <td class="qty">3</td>
-                  <td><code>47R</code></td>
-                  <td>0603</td>
-                  <td><code>C23182</code></td>
-                  <td>Input hub R3 R4 R5</td>
-                </tr>
-                <tr>
-                  <td class="qty">2</td>
-                  <td><code>100</code></td>
-                  <td>0603</td>
-                  <td><code>C22775</code></td>
-                  <td>Input hub R6; mouse pointer R3</td>
-                </tr>
-                <tr>
-                  <td class="qty">4</td>
-                  <td><code>10k</code></td>
-                  <td>0603</td>
-                  <td><code>C25804</code></td>
-                  <td>Input hub R7 R8 R9; mouse pointer R1</td>
-                </tr>
-                <tr>
-                  <td class="qty">4</td>
-                  <td><code>TPD4E05U06DQAR</code></td>
-                  <td>IC_TPD4E05U06DQAR</td>
-                  <td><code>C138714</code></td>
-                  <td>Input hub U2 U3; mouse pointer U3 U4</td>
-                </tr>
-                <tr>
-                  <td class="qty">1</td>
-                  <td><code>3.3uF/16V</code></td>
-                  <td>0805</td>
-                  <td><code>C7393948</code></td>
-                  <td>Mouse pointer C1</td>
-                </tr>
-                <tr>
-                  <td class="qty">3</td>
-                  <td><code>100nF</code></td>
-                  <td>0603</td>
-                  <td><code>C14663</code></td>
-                  <td>Mouse pointer C2 C3 C4</td>
-                </tr>
-                <tr>
-                  <td class="qty">2</td>
-                  <td><code>10nF</code></td>
-                  <td>0603</td>
-                  <td><code>C57112</code></td>
-                  <td>Mouse pointer C5 C7</td>
-                </tr>
-                <tr>
-                    <td class="qty">4</td>
-                  <td><code>0R</code></td>
-                  <td>0603</td>
-                  <td><code>C21189</code></td>
-                    <td>Input hub JP1 JP2 (optional for normally closed pedals); mouse pointer JP1 JP3</td>
-                </tr>
-                <tr>
-                  <td class="qty">1</td>
-                  <td><code>PMW3610</code></td>
-                  <td>PMW3610DM-SUDU 16Pin</td>
-                  <td><code>C42442560</code></td>
-                  <td>Mouse pointer U1</td>
-                </tr>
-                <tr>
-                  <td class="qty">1</td>
-                  <td><code>TLV74318PDBVR</code></td>
-                  <td>SOT-23-5_HandSoldering</td>
-                  <td><code>C485152</code></td>
-                  <td>Mouse pointer U2</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <section id="pinout">
-          <div class="section-heading">
-            <div>
-              <h2>Slipper cable wiring</h2>
-            </div>
-            <p>
-              The RJ45 connector is used as a ClickTapToe sensor cable, not as an
-              Ethernet connection.
-            </p>
-          </div>
-
-          <div class="pinout" role="region" aria-label="Slipper cable pinout table" tabindex="0">
-            <table>
-              <thead>
-                <tr>
-                  <th>RJ45 pin</th>
-                  <th>Signal</th>
-                  <th>Input hub side</th>
-                  <th>Mouse pointer side</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td><code>VIN</code> / <code>3V3</code></td>
-                  <td>3.3 V sensor power</td>
-                  <td>Sensor board input power</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td><code>GND</code></td>
-                  <td>Ground</td>
-                  <td>Ground return</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td><code>SCLK</code></td>
-                  <td>PMW3610 SPI clock</td>
-                  <td>PMW3610 SPI clock</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td><code>SDIO</code></td>
-                  <td>Bidirectional SPI data</td>
-                  <td>Bidirectional SPI data</td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td><code>nCS</code></td>
-                  <td>PMW3610 chip select</td>
-                  <td>PMW3610 chip select</td>
-                </tr>
-                <tr>
-                  <td>6</td>
-                  <td><code>GND</code></td>
-                  <td>Ground</td>
-                  <td>Ground return paired with <code>SCLK</code></td>
-                </tr>
-                <tr>
-                  <td>7</td>
-                  <td><code>MOTION</code></td>
-                  <td>PMW3610 motion interrupt</td>
-                  <td>Active-low PMW3610 motion output</td>
-                </tr>
-                <tr>
-                  <td>8</td>
-                  <td><code>nRESET</code></td>
-                  <td>Reset routed to XIAO <code>D6</code></td>
-                  <td>Reset routed through installed link</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <section>
-          <div class="notes">
-            <article class="note warning">
-              <h3>Pedal jumper settings</h3>
-              <p>
-                Install the optional 0 ohm jumpers <code>JP1</code> and
-                <code>JP2</code> for normally closed pedals so unplugged jacks
-                stay idle. Normally open pedals need matching firmware and
-                unpopulated jumpers.
-              </p>
-            </article>
-            <article class="note">
-              <h3>Firmware target</h3>
-              <p>
-                The active firmware target is <code>xiao_ble//zmk</code> with the
-                <code>clicktaptoe</code> shield. The current build uses USB HID
-                mouse output with Bluetooth disabled.
-              </p>
-            </article>
-          </div>
-        </section>
+      <div class="page-shell mouse-trail home-trail" data-mouse-trail data-direction="left" aria-hidden="true">
+        <div class="mouse-lane">
+          <span class="mouse-mark trail-mouse following"><span class="mouse-body"></span></span>
+          <span class="mouse-mark trail-mouse"><span class="mouse-body"></span></span>
+        </div>
+        <span class="mouse-hole"></span>
       </div>
+
+      <section class="page-shell home-boards" id="boards" aria-labelledby="boards-title">
+        <div class="home-boards-heading">
+          <h2 id="boards-title">The circuit boards</h2>
+          <a class="button" href="docs/hardware.html">Explore the hardware <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="image-grid">
+          <figure class="board-image">
+            <a href="docs/hardware.html#input-hub" aria-label="Explore the input hub board">
+              <img src="docs/assets/input-hub-board.svg" alt="Top view of the input hub circuit board" loading="lazy">
+            </a>
+            <figcaption>Input hub board</figcaption>
+          </figure>
+          <figure class="board-image">
+            <a href="docs/hardware.html#mouse-pointer" aria-label="Explore the slipper pointer board">
+              <img src="docs/assets/mouse-pointer-board.svg" alt="Top view of the slipper pointer circuit board" loading="lazy">
+            </a>
+            <figcaption>Slipper pointer board</figcaption>
+          </figure>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">

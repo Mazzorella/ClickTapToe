@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Circuit board designs, manufacturing files, and wiring for ClickTapToe.">
+    <meta name="theme-color" content="#fff6e7">
+    <title>Hardware | ClickTapToe</title>
+    <link rel="icon" type="image/png" sizes="64x64" href="assets/mouse-favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700&amp;family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&amp;display=swap">
+    <link rel="stylesheet" href="assets/site.css?v=project-pages">
+    <link rel="stylesheet" href="assets/hardware.css?v=project-pages">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <nav class="page-shell site-nav" aria-label="Project navigation">
+        <a class="wordmark" href="../index.html">
+          <span class="brand-mark" aria-hidden="true"><span class="mouse-mark"><span class="mouse-body"></span></span></span>
+          ClickTapToe
+        </a>
+        <div class="navlinks">
+          <a href="hub-assembly.html">Assembly</a>
+          <a href="maintenance.html">Maintenance</a>
+          <a href="hardware.html" aria-current="page">Hardware</a>
+          <a href="https://github.com/Mazzorella/ClickTapToe">GitHub</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="page-shell resource-main hardware" id="main-content">
+      <header class="resource-heading" id="hardware">
+        <h1>Hardware</h1>
+        <p>Explore the two circuit boards from v0.4.0, get the files to make them, and check how the hub and slipper connect.</p>
+      </header>
+
+      <nav class="resource-actions" aria-label="Hardware sections">
+        <a class="button" href="#boards">Board designs</a>
+        <a class="button" href="#files">Manufacturing files</a>
+        <a class="button" href="#bom">Electronics parts list</a>
+        <a class="button" href="#pinout">Slipper wiring</a>
+      </nav>
+
+      <section class="resource-section" id="boards" aria-labelledby="boards-title">
+        <div class="resource-section-heading">
+          <h2 id="boards-title">Explore the board designs</h2>
+          <p>Open either board in KiCanvas to inspect the layout and schematic in your browser. Use the KiCad source to edit the design.</p>
+        </div>
+
+        <div class="image-grid" id="interactive">
+          <article class="board-image" id="input-hub">
+            <img src="assets/input-hub-board.svg" alt="Top view of the input hub circuit board">
+            <h3>Input hub</h3>
+            <p>Connects the scroll wheel, click pedals, and slipper to your computer over USB.</p>
+            <div class="resource-actions">
+              <a class="button primary" href="../hardware/input-hub/kicanvas.html" aria-label="Open the interactive input hub board preview">Interactive preview</a>
+              <a class="button" href="https://github.com/Mazzorella/ClickTapToe/tree/v0.4.0/hardware/input-hub/kicad" aria-label="Input hub KiCad source">KiCad source</a>
+            </div>
+            <a href="https://github.com/Mazzorella/ClickTapToe/tree/main/hardware/input-hub#readme">Input hub notes</a>
+          </article>
+          <article class="board-image" id="mouse-pointer">
+            <img src="assets/mouse-pointer-board.svg" alt="Top view of the slipper pointer circuit board">
+            <h3>Slipper pointer</h3>
+            <p>Holds the optical sensor that tracks the slipper as it moves.</p>
+            <div class="resource-actions">
+              <a class="button primary" href="../hardware/mouse-pointer/kicanvas.html" aria-label="Open the interactive slipper board preview">Interactive preview</a>
+              <a class="button" href="https://github.com/Mazzorella/ClickTapToe/tree/v0.4.0/hardware/mouse-pointer/kicad" aria-label="Slipper pointer KiCad source">KiCad source</a>
+            </div>
+            <a href="https://github.com/Mazzorella/ClickTapToe/tree/main/hardware/mouse-pointer#readme">Pointer board notes</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="resource-section" id="files" aria-labelledby="files-title">
+        <div class="resource-section-heading">
+          <h2 id="files-title">Make the circuit boards</h2>
+          <p>These downloads match the tested v0.4.0 hardware. Send the Gerber and drill ZIP to a PCB manufacturer to make the bare board. If you order assembly, send the matching parts list and placement files too.</p>
+        </div>
+
+        <div class="image-grid">
+          <article class="resource-card">
+            <h3>Input hub</h3>
+            <ul class="download-links">
+              <li><a href="assets/v0.4.0/input-hub/input_hub.zip" download>Gerber and drill files (ZIP)</a></li>
+              <li><a href="assets/v0.4.0/input-hub/bom.csv" download>Assembly parts list (CSV)</a></li>
+              <li><a href="assets/v0.4.0/input-hub/positions.csv" download>Component placement (CSV)</a></li>
+            </ul>
+          </article>
+          <article class="resource-card">
+            <h3>Slipper pointer</h3>
+            <ul class="download-links">
+              <li><a href="https://raw.githubusercontent.com/Mazzorella/ClickTapToe/v0.4.0/hardware/mouse-pointer/kicad/production/Mouse_Pointer_1.0.zip" download>Gerber and drill files (ZIP)</a></li>
+              <li><a href="https://raw.githubusercontent.com/Mazzorella/ClickTapToe/v0.4.0/hardware/mouse-pointer/kicad/production/bom.csv" download>Assembly parts list (CSV)</a></li>
+              <li><a href="https://raw.githubusercontent.com/Mazzorella/ClickTapToe/v0.4.0/hardware/mouse-pointer/kicad/production/positions.csv" download>Component placement (CSV)</a></li>
+            </ul>
+          </article>
+        </div>
+
+        <details class="resource-details" id="component-models">
+          <summary>Component STEP models</summary>
+          <p>Use these models to check clearances for individual parts, such as connectors and sensors. The enclosure and wheel design files are being revised.</p>
+          <div class="image-grid">
+            <div>
+              <h3>Input hub components</h3>
+              <ul class="download-links">
+                <li><a href="../hardware/input-hub/kicad/3dmodels/102010448.step" download>XIAO controller module</a></li>
+                <li><a href="../hardware/input-hub/kicad/3dmodels/ACJMIH.step" download>¼-inch pedal jack</a></li>
+                <li><a href="../hardware/input-hub/kicad/3dmodels/AUDIO-TH_PJ-307.step" download>3.5 mm pedal jack</a></li>
+                <li><a href="../hardware/input-hub/kicad/3dmodels/54602-908LFc.stp" download>RJ45 socket</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3>Slipper pointer components</h3>
+              <ul class="download-links">
+                <li><a href="../hardware/mouse-pointer/kicad/3dmodels/PMW3610DM-SUDU.step" download>PMW3610 optical sensor</a></li>
+                <li><a href="../hardware/mouse-pointer/kicad/3dmodels/54602-908LFc.stp" download>RJ45 socket</a></li>
+                <li><a href="../hardware/mouse-pointer/kicad/3dmodels/TPD4E05U06DQAR.step" download>ESD protection chip</a></li>
+              </ul>
+            </div>
+          </div>
+        </details>
+      </section>
+
+      <section class="resource-section" id="bom" aria-labelledby="bom-title">
+        <div class="resource-section-heading">
+          <h2 id="bom-title">Electronics parts list</h2>
+          <p>This list combines the components in both board assembly orders. See the <a href="hub-assembly.html#parts">assembly guide</a> for the enclosure parts, pedals, cables, and other items.</p>
+        </div>
+        <a class="button primary" href="assets/clicktaptoe-electronics-bom.csv" download>Download the combined list (CSV)</a>
+        <details class="resource-details">
+          <summary>View the electronics parts table</summary>
+          <div class="bom-table" role="region" aria-label="Electronics parts list table" tabindex="0">
+            <table>
+              <thead>
+                <tr>
+                  <th>Qty</th>
+                  <th>Value</th>
+                  <th>Footprint</th>
+                  <th>LCSC part</th>
+                  <th>Used on</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="qty">4</td>
+                  <td><code>1uF</code></td>
+                  <td>0603</td>
+                  <td><code>C15849</code></td>
+                  <td>Input hub C1 C3; mouse pointer C8 C9</td>
+                </tr>
+                <tr>
+                  <td class="qty">2</td>
+                  <td><code>10uF</code></td>
+                  <td>0805</td>
+                  <td><code>C15850</code></td>
+                  <td>Input hub C2; mouse pointer C6</td>
+                </tr>
+                <tr>
+                  <td class="qty">1</td>
+                  <td><code>1206L012WR</code></td>
+                  <td>1206</td>
+                  <td><code>C151160</code></td>
+                  <td>Input hub F1</td>
+                </tr>
+                <tr>
+                  <td class="qty">1</td>
+                  <td><code>B2B-PH-SM4-TB</code></td>
+                  <td>JST_PH_B2B-PH-SM4-TB_1x02-1MP_P2.00mm_Vertical</td>
+                  <td><code>C160352</code></td>
+                  <td>Input hub J11</td>
+                </tr>
+                <tr>
+                  <td class="qty">1</td>
+                  <td><code>BM04B-SRSS-TB_LF__SN_</code></td>
+                  <td>JST_BM04B-SRSS-TB_LF__SN_</td>
+                  <td><code>C160390</code></td>
+                  <td>Input hub J5</td>
+                </tr>
+                <tr>
+                  <td class="qty">2</td>
+                  <td><code>330</code></td>
+                  <td>0603</td>
+                  <td><code>C23138</code></td>
+                  <td>Input hub R1 R2</td>
+                </tr>
+                <tr>
+                  <td class="qty">3</td>
+                  <td><code>47R</code></td>
+                  <td>0603</td>
+                  <td><code>C23182</code></td>
+                  <td>Input hub R3 R4 R5</td>
+                </tr>
+                <tr>
+                  <td class="qty">2</td>
+                  <td><code>100</code></td>
+                  <td>0603</td>
+                  <td><code>C22775</code></td>
+                  <td>Input hub R6; mouse pointer R3</td>
+                </tr>
+                <tr>
+                  <td class="qty">4</td>
+                  <td><code>10k</code></td>
+                  <td>0603</td>
+                  <td><code>C25804</code></td>
+                  <td>Input hub R7 R8 R9; mouse pointer R1</td>
+                </tr>
+                <tr>
+                  <td class="qty">4</td>
+                  <td><code>TPD4E05U06DQAR</code></td>
+                  <td>IC_TPD4E05U06DQAR</td>
+                  <td><code>C138714</code></td>
+                  <td>Input hub U2 U3; mouse pointer U3 U4</td>
+                </tr>
+                <tr>
+                  <td class="qty">1</td>
+                  <td><code>3.3uF/16V</code></td>
+                  <td>0805</td>
+                  <td><code>C7393948</code></td>
+                  <td>Mouse pointer C1</td>
+                </tr>
+                <tr>
+                  <td class="qty">3</td>
+                  <td><code>100nF</code></td>
+                  <td>0603</td>
+                  <td><code>C14663</code></td>
+                  <td>Mouse pointer C2 C3 C4</td>
+                </tr>
+                <tr>
+                  <td class="qty">2</td>
+                  <td><code>10nF</code></td>
+                  <td>0603</td>
+                  <td><code>C57112</code></td>
+                  <td>Mouse pointer C5 C7</td>
+                </tr>
+                <tr>
+                  <td class="qty">2</td>
+                  <td><code>0R</code></td>
+                  <td>0603</td>
+                  <td><code>C21189</code></td>
+                  <td>Mouse pointer JP1 JP3</td>
+                </tr>
+                <tr>
+                  <td class="qty">1</td>
+                  <td><code>PMW3610</code></td>
+                  <td>PMW3610DM-SUDU 16Pin</td>
+                  <td><code>C42442560</code></td>
+                  <td>Mouse pointer U1</td>
+                </tr>
+                <tr>
+                  <td class="qty">1</td>
+                  <td><code>TLV74318PDBVR</code></td>
+                  <td>SOT-23-5_HandSoldering</td>
+                  <td><code>C485152</code></td>
+                  <td>Mouse pointer U2</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+      </section>
+
+      <section class="resource-section" id="pinout" aria-labelledby="pinout-title">
+        <div class="resource-section-heading">
+          <h2 id="pinout-title">Slipper cable wiring</h2>
+          <p>The ClickTapToe RJ45 socket carries power and sensor signals between the hub and slipper.</p>
+        </div>
+        <div class="pinout" role="region" aria-label="Slipper cable pinout table" tabindex="0">
+          <table>
+            <thead>
+              <tr>
+                <th>RJ45 pin</th>
+                <th>Signal</th>
+                <th>Input hub side</th>
+                <th>Mouse pointer side</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td><code>VIN</code> / <code>3V3</code></td>
+                <td>3.3 V sensor power</td>
+                <td>Sensor board input power</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td><code>GND</code></td>
+                <td>Ground</td>
+                <td>Ground return</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td><code>SCLK</code></td>
+                <td>PMW3610 SPI clock</td>
+                <td>PMW3610 SPI clock</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td><code>SDIO</code></td>
+                <td>Bidirectional SPI data</td>
+                <td>Bidirectional SPI data</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td><code>nCS</code></td>
+                <td>PMW3610 chip select</td>
+                <td>PMW3610 chip select</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td><code>GND</code></td>
+                <td>Ground</td>
+                <td>Ground return paired with <code>SCLK</code></td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td><code>MOTION</code></td>
+                <td>PMW3610 motion interrupt</td>
+                <td>Active-low PMW3610 motion output</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td><code>nRESET</code></td>
+                <td>Reset routed to XIAO <code>D6</code></td>
+                <td>Reset routed through installed link</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="resource-section" aria-labelledby="setup-title">
+        <div class="resource-section-heading">
+          <h2 id="setup-title">Board setup</h2>
+        </div>
+        <div class="image-grid">
+          <article class="resource-card">
+            <h3>Pedals</h3>
+            <p>Use normally closed pedals with v0.4.0 and plug both in before connecting the hub to your computer.</p>
+            <p>The optional pedal-jack jumpers in the <a href="https://github.com/Mazzorella/ClickTapToe/tree/main/hardware/input-hub#readme">next hub revision</a> are awaiting hardware testing.</p>
+          </article>
+          <article class="resource-card">
+            <h3>Firmware</h3>
+            <p>Use the tested v0.4.0 firmware to set up the hub as a USB mouse.</p>
+            <ul class="download-links">
+              <li><a href="https://raw.githubusercontent.com/Mazzorella/ClickTapToe/v0.4.0/firmware/clicktaptoe_xiao_usb_zmk.uf2" download>Download the firmware (UF2)</a></li>
+              <li><a href="https://github.com/Mazzorella/ClickTapToe#flashing">Flashing instructions</a></li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="page-shell footer-inner">
+        <strong>ClickTapToe</strong>
+        <div class="footer-links">
+          <a href="../index.html">Project homepage</a>
+          <a href="https://github.com/Mazzorella/ClickTapToe/blob/main/HARDWARE.md">Hardware notes</a>
+          <a href="https://github.com/Mazzorella/ClickTapToe">GitHub</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

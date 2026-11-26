@@ -334,10 +334,6 @@ li {
   color: var(--accent);
 }
 
-.back-to-top {
-  margin-top: 2.5rem;
-}
-
 @media (min-width: 48rem) {
   .guide-overview {
     grid-template-columns: minmax(0, 1fr) minmax(16rem, 19rem);

@@ -179,6 +179,75 @@ a:hover {
   background: var(--accent-strong);
 }
 
+.resource-main {
+  min-height: 65vh;
+  padding-block: clamp(1.6rem, 4vw, 3.2rem);
+}
+
+.resource-heading h1 {
+  font-size: clamp(2.6rem, 6vw, 4.5rem);
+  letter-spacing: -0.04em;
+}
+
+.resource-heading p {
+  max-width: 62ch;
+  margin: 0.65rem 0 1rem;
+  color: var(--muted);
+  font-size: 1.13rem;
+}
+
+.resource-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.image-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.board-image {
+  min-width: 0;
+  margin: 0;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.board-image > a:first-child,
+.board-image img {
+  display: block;
+  border-radius: 0.65rem;
+}
+
+.board-image img {
+  width: 100%;
+  height: clamp(10rem, 22vw, 16rem);
+  object-fit: contain;
+  background: #f5eee9;
+}
+
+.board-image figcaption {
+  margin-top: 0.45rem;
+  font-family: var(--display);
+  font-weight: 800;
+}
+
+@media (min-width: 40rem) {
+  .image-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 27rem) {
+  .navlinks a {
+    padding-inline: 0.35rem;
+    font-size: 0.9rem;
+  }
+}
+
 .slipper-crop {
   aspect-ratio: 16 / 9;
   object-fit: cover;
@@ -246,6 +315,7 @@ a:hover {
 }
 
 .mouse-trail {
+  --hole-width: 2.7rem;
   position: relative;
   height: 2.7rem;
   overflow: hidden;
@@ -254,7 +324,7 @@ a:hover {
 
 .mouse-trail::before {
   position: absolute;
-  right: 0;
+  right: var(--hole-width);
   bottom: 0.35rem;
   left: 0;
   border-bottom: 2px dotted var(--line-strong);
@@ -262,19 +332,65 @@ a:hover {
 }
 
 .trail-mouse {
-  --position: var(--trail-front, 34%);
+  --position: var(--trail-front, var(--front-rest, 34%));
   position: absolute;
   bottom: 0.36rem;
   left: var(--position);
-  transform: translateX(calc(-1 * var(--position)));
   font-size: 1.18rem;
 }
 
 .trail-mouse.following {
-  --position: var(--trail-back, 9%);
+  --position: var(--trail-back, var(--back-rest, 9%));
   --fur: #b8cca6;
   --ear: #e4efdc;
   font-size: 0.9rem;
+}
+
+.mouse-lane {
+  position: absolute;
+  inset: 0 calc(var(--hole-width) - 0.26rem) 0 0;
+  overflow: hidden;
+}
+
+.mouse-hole {
+  position: absolute;
+  right: 0;
+  bottom: 0.35rem;
+  width: var(--hole-width);
+  height: 2.3rem;
+  border: 1px solid #a17468;
+  border-bottom: 0;
+  border-radius: 1.4rem 1.4rem 0.15rem 0.15rem;
+  background: linear-gradient(115deg, var(--peach), #d99a80);
+}
+
+.mouse-hole::before {
+  position: absolute;
+  inset: 0.23rem 0.25rem 0;
+  border-radius: 1.15rem 1.15rem 0.05rem 0.05rem;
+  background: linear-gradient(135deg, #291b29 24%, #50374a);
+  box-shadow: inset 0.16rem 0.12rem 0 #6f4d5b;
+  content: "";
+}
+
+.mouse-hole::after {
+  position: absolute;
+  right: 0;
+  bottom: -0.08rem;
+  left: -0.16rem;
+  height: 0.15rem;
+  border-radius: 999px;
+  background: #a17468;
+  content: "";
+}
+
+.mouse-trail[data-direction="left"] {
+  --front-rest: 29%;
+  --back-rest: 53%;
+}
+
+.mouse-trail[data-direction="left"] .trail-mouse {
+  transform: scaleX(-1);
 }
 
 .site-footer {

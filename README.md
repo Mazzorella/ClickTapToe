@@ -7,8 +7,16 @@ This repository contains the firmware, hardware notes, and project documentation
 The [hub assembly photo guide](https://mazzorella.github.io/ClickTapToe/docs/hub-assembly.html)
 shows how to assemble the scroll wheel and hub, wire the sensor, and connect the
 finished slipper pointer. The enclosure and wheel STEP files are being revised.
+The [scroll wheel maintenance guide](https://mazzorella.github.io/ClickTapToe/docs/maintenance.html)
+shows how to remove, clean, adjust, and reinstall the wheel.
 
 ## Current Status
+
+The [v0.4.0 release](https://github.com/Mazzorella/ClickTapToe/tree/v0.4.0)
+includes both custom circuit boards and the USB firmware tested with them.
+Get the [matching manufacturing files](https://mazzorella.github.io/ClickTapToe/docs/hardware.html#files)
+before ordering boards. The newer input hub jumper revision on `main` is
+awaiting hardware validation.
 
 The current firmware supports USB mouse clicks from external pedals, USB vertical scrolling from the input hub scroll wheel, and pointer movement from the mouse pointer module:
 
@@ -29,13 +37,15 @@ ClickTapToe is built from two custom electronics modules plus external pedals:
 - The pedals are premade external pedals connected to the input hub so higher-quality parts can be used and the project is easier to reproduce.
 
 See [HARDWARE.md](HARDWARE.md) for the current pin map and hardware notes.
-For a public-facing hardware overview with embedded board previews, open the
-[ClickTapToe project site](https://mazzorella.github.io/ClickTapToe/).
+Visit the [ClickTapToe project site](https://mazzorella.github.io/ClickTapToe/)
+for an overview, or open the
+[hardware page](https://mazzorella.github.io/ClickTapToe/docs/hardware.html)
+for interactive board previews, source files, and manufacturing downloads.
 
 | Board | Source | KiCanvas preview |
 | --- | --- | --- |
-| Input hub | [hardware/input-hub/](hardware/input-hub/) | [Open preview](https://mazzorella.github.io/ClickTapToe/hardware/input-hub/kicanvas.html) |
-| Mouse pointer | [hardware/mouse-pointer/](hardware/mouse-pointer/) | [Open preview](https://mazzorella.github.io/ClickTapToe/hardware/mouse-pointer/kicanvas.html) |
+| Input hub | [v0.4.0 KiCad files](https://github.com/Mazzorella/ClickTapToe/tree/v0.4.0/hardware/input-hub/kicad) | [Open preview](https://mazzorella.github.io/ClickTapToe/hardware/input-hub/kicanvas.html) |
+| Mouse pointer | [v0.4.0 KiCad files](https://github.com/Mazzorella/ClickTapToe/tree/v0.4.0/hardware/mouse-pointer/kicad) | [Open preview](https://mazzorella.github.io/ClickTapToe/hardware/mouse-pointer/kicanvas.html) |
 
 ## Repository Layout
 
@@ -60,10 +70,13 @@ artifact-name: clicktaptoe_xiao_usb_zmk
 
 ## Flashing
 
-1. Build the firmware with GitHub Actions or a local ZMK toolchain.
-2. Put the XIAO BLE into bootloader mode so it mounts as a UF2 drive.
-3. Copy the generated `clicktaptoe_xiao_usb_zmk.uf2` file onto the mounted drive.
-4. After the board reboots, connect it to the host over USB.
+Use the [tested v0.4.0 UF2](https://raw.githubusercontent.com/Mazzorella/ClickTapToe/v0.4.0/firmware/clicktaptoe_xiao_usb_zmk.uf2)
+to flash the release firmware. To build your own copy, use GitHub Actions or a
+local ZMK toolchain.
+
+1. Put the XIAO BLE into bootloader mode so it mounts as a UF2 drive.
+2. Copy `clicktaptoe_xiao_usb_zmk.uf2` onto the mounted drive.
+3. After the board reboots, connect it to the host over USB.
 
 ## Hardware Test
 
@@ -113,10 +126,13 @@ west update
 
 Restart the devcontainer after `west update` completes.
 
-Clone the PMW3610 driver module where the `Makefile` can find it. In the default devcontainer layout:
+Clone the PMW3610 driver module where the `Makefile` can find it. Check out the
+revision pinned in [config/west.yml](config/west.yml) so the driver matches the
+one used by GitHub Actions:
 
 ```sh
 git clone https://github.com/badjeff/zmk-pmw3610-driver /workspaces/zmk-pmw3610-driver
+git -C /workspaces/zmk-pmw3610-driver checkout --detach 44b4a76b74d293a93cec4ccb7e04cb8d29c10f93
 ```
 
 After that, run the build commands from this repository:

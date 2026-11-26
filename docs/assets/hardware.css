@@ -1,0 +1,140 @@
+.resource-section {
+  margin-top: clamp(1.65rem, 4vw, 3rem);
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.resource-section-heading {
+  margin-bottom: 0.85rem;
+}
+
+.resource-section h2 {
+  font-size: clamp(1.6rem, 3vw, 2.35rem);
+}
+
+.resource-section h3 {
+  font-size: 1.23rem;
+}
+
+.resource-section-heading p,
+.resource-card p,
+.board-image p {
+  max-width: 65ch;
+  margin: 0.45rem 0 0;
+  color: var(--muted);
+}
+
+.hardware .board-image h3 {
+  margin-top: 0.7rem;
+}
+
+.hardware .board-image .resource-actions {
+  margin-top: 0.65rem;
+}
+
+.hardware .board-image > a:last-child,
+.resource-card > a {
+  display: inline-block;
+  margin-top: 0.65rem;
+}
+
+.resource-card,
+.resource-details,
+.pinout,
+.bom-table {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.resource-card,
+.resource-details {
+  padding: 1rem;
+}
+
+.resource-details {
+  margin-top: 0.85rem;
+}
+
+.resource-details summary {
+  color: var(--accent-strong);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.resource-details p {
+  max-width: 65ch;
+  margin: 0.65rem 0;
+}
+
+.resource-details .bom-table {
+  margin-top: 0.75rem;
+}
+
+.download-links {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.download-links a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.5rem 0.65rem;
+  border: 1px solid var(--line);
+  border-radius: 0.6rem;
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.download-links a:hover {
+  border-color: var(--line-strong);
+  background: var(--peach);
+}
+
+.pinout,
+.bom-table {
+  overflow-x: auto;
+}
+
+.hardware table {
+  width: 100%;
+  min-width: 42rem;
+  border-collapse: collapse;
+}
+
+.bom-table table {
+  min-width: 52rem;
+}
+
+.hardware th,
+.hardware td {
+  padding: 0.65rem 0.8rem;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.hardware th {
+  background: var(--peach);
+}
+
+.hardware tr:last-child td {
+  border-bottom: 0;
+}
+
+.qty {
+  font-weight: 700;
+}
+
+.hardware code {
+  padding: 0.08rem 0.24rem;
+  border-radius: 0.25rem;
+  background: #f4ece7;
+  font-size: 0.9em;
+}

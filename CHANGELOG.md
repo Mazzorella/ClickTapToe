@@ -6,12 +6,26 @@ The format is based on Keep a Changelog, and this project uses semantic versioni
 
 ## [Unreleased]
 
+### Hardware
+
+- Add optional pedal jack normal-contact grounding jumpers (JP1 and JP2) to
+  the input hub and update its fabrication files. This board revision is
+  awaiting hardware validation for v0.4.1.
+
+## [0.4.0] - 2026-11-26
+
+The first release with both custom circuit boards uses the input hub revision
+and tested USB firmware recorded on June 11, 2026. The hub fabrication and
+assembly files for this revision are available on the
+[hardware page](https://mazzorella.github.io/ClickTapToe/docs/hardware.html#files).
+
 ### Firmware
 
 - Restore the validated USB HID ClickTapToe firmware configuration for the
   working input hub PCB.
-- Add AS5600 magnetic scroll sensor support for the input hub scroll wheel.
+- Use an AS5600 magnetic angle sensor for the input hub scroll wheel.
 - Add XIAO onboard status LED activity reporting for bring-up feedback.
+- Include the tested UF2 for the XIAO nRF52840 and normally closed pedals.
 
 ### Hardware
 
@@ -22,17 +36,17 @@ The format is based on Keep a Changelog, and this project uses semantic versioni
   PMW3610 power, SPI, motion interrupt, and reset routing.
 - Add ESD protection, alternate pedal jack footprints, updated connector
   layout, silkscreen artwork, and production output refinements.
-- Add optional pedal jack normal-contact grounding jumpers to the input hub
-  board and update its fabrication downloads.
 
 ### Documentation
 
-- Add the public hardware viewer page with board images, embedded KiCanvas
-  previews, fabrication downloads, a combined electronics BOM, and the RJ45
-  pinout.
-- Add a photo guide for assembling the hub and connecting the slipper.
-- Add follow-up notes for the deferred PMW3610 reset-retry driver stash and the
-  stashed XIAO battery access footprint.
+- Add a project homepage and a dedicated hardware page with KiCanvas previews,
+  board source, manufacturing downloads, an electronics parts list, and the
+  slipper cable pinout.
+- Add photo guides for assembling the hub, connecting the slipper, and cleaning
+  and adjusting the scroll wheel.
+- Document the scroll sensor cable pinout and the driver revision used for local
+  firmware builds.
+- Record deferred PMW3610 reset-retry and XIAO battery access work.
 
 ## [0.3.1] - 2026-05-14
 
@@ -64,8 +78,8 @@ The format is based on Keep a Changelog, and this project uses semantic versioni
 
 ### Firmware
 
-- AS5600 magnetic scroll wheel support for USB vertical scrolling.
-- Documentation for the AS5600 scroll pin map and hardware test steps.
+- Use an EC11 rotary encoder for USB vertical scrolling.
+- Document the EC11 wiring and hardware test steps.
 
 ### Hardware
 
@@ -84,3 +98,6 @@ The format is based on Keep a Changelog, and this project uses semantic versioni
 ### Hardware
 
 - No hardware design files included yet.
+
+[Unreleased]: https://github.com/Mazzorella/ClickTapToe/compare/v0.4.0...main
+[0.4.0]: https://github.com/Mazzorella/ClickTapToe/tree/v0.4.0

@@ -39,10 +39,15 @@ feat: add mouse pointer board source
 
 ## Releases
 
-Releases are named usable checkpoints, not every commit.
+Releases mark usable hardware and firmware checkpoints.
 
-- Use `v0.X.0` for meaningful project milestones.
-- Use `v0.X.Y` for fixes to that milestone.
+- Use `v0.X.0` for a meaningful new device capability or a new hardware and
+  firmware combination builders need to match.
+- Use `v0.X.Y` for targeted hardware or firmware fixes to that milestone.
+- Tag each release at the commit with the validated hardware source and matching
+  firmware. Link to matching fabrication files from the hardware page.
+- Publish website and guide updates as regular commits. If a guide correction
+  affects an existing build, record it in the notes for that release.
 - Do not move existing release tags.
 - Do not put partial next-milestone work into a patch release.
 - Update `CHANGELOG.md` when preparing a release, summarizing the commits since

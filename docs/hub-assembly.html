@@ -6,12 +6,13 @@
     <meta name="description" content="A photo guide to assembling the ClickTapToe scroll hub and connecting its slipper pointer.">
     <meta name="theme-color" content="#fff6e7">
     <title>ClickTapToe Hub Assembly Guide</title>
+    <link rel="icon" type="image/png" sizes="64x64" href="assets/mouse-favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700&amp;family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&amp;display=swap">
-    <link rel="stylesheet" href="assets/site.css?v=warm-trail">
-    <link rel="stylesheet" href="assets/hub-assembly.css?v=warm-trail">
-    <script src="assets/site.js?v=warm-trail" defer></script>
+    <link rel="stylesheet" href="assets/site.css?v=project-pages">
+    <link rel="stylesheet" href="assets/hub-assembly.css?v=mouse-arch">
+    <script src="assets/site.js?v=project-pages" defer></script>
     <script src="assets/hub-assembly.js?v=slipper-crop" defer></script>
   </head>
   <body>
@@ -23,8 +24,9 @@
           ClickTapToe
         </a>
         <div class="navlinks">
-          <a href="hub-assembly.html" aria-current="page">Assembly guide</a>
-          <a href="../index.html#hardware">Hardware</a>
+          <a href="hub-assembly.html" aria-current="page">Assembly</a>
+          <a href="maintenance.html">Maintenance</a>
+          <a href="hardware.html">Hardware</a>
           <a href="https://github.com/Mazzorella/ClickTapToe">GitHub</a>
         </div>
       </nav>
@@ -41,7 +43,7 @@
             <h2 id="parts">Parts</h2>
             <ul>
               <li>Printed hub body, cover, and wheel. Shaft, two 608RS bearings, and a diametrically magnetized magnet.</li>
-              <li>Populated <a href="../index.html#files">hub board</a>, <a href="https://www.adafruit.com/product/6357">AS5600 magnetic sensor</a>, four spacers, and a STEMMA QT / Qwiic cable with 4-pin JST-SH plugs at both ends.</li>
+              <li>Populated <a href="hardware.html#files">hub board</a>, <a href="https://www.adafruit.com/product/6357">AS5600 magnetic sensor</a>, four spacers, and a STEMMA QT / Qwiic cable with 4-pin JST-SH plugs at both ends.</li>
               <li>Heat-set inserts, mounting screws, wheel set screw, two ¼-inch TS jack nuts, and optional ½ oz tire weights.</li>
               <li>Assembled slipper, straight-through RJ45 cable, two click pedals, and a USB-C data cable.</li>
             </ul>
@@ -73,9 +75,12 @@
         </nav>
       </div>
 
-      <div class="mouse-trail guide-trail" data-mouse-trail aria-hidden="true">
-        <span class="mouse-mark trail-mouse following"><span class="mouse-body"></span></span>
-        <span class="mouse-mark trail-mouse"><span class="mouse-body"></span></span>
+      <div class="mouse-trail guide-trail" data-mouse-trail data-direction="right" aria-hidden="true">
+        <div class="mouse-lane">
+          <span class="mouse-mark trail-mouse following"><span class="mouse-body"></span></span>
+          <span class="mouse-mark trail-mouse"><span class="mouse-body"></span></span>
+        </div>
+        <span class="mouse-hole"></span>
       </div>
 
       <section class="step" aria-labelledby="bearings">
@@ -403,7 +408,6 @@
           </ul>
         </div>
       </section>
-      <p class="back-to-top"><a href="#assembly-steps">Back to assembly steps</a></p>
     </main>
 
     <footer class="site-footer">

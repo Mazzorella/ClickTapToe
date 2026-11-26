@@ -64,15 +64,11 @@ for future hardware reset support.
 
 ## Online Review
 
-`kicanvas.html` embeds the schematic and PCB in KiCanvas for browser-based
-review. If GitHub Pages is enabled from the repository root, the mouse pointer
-viewer is available at:
+Open the [mouse pointer KiCanvas viewer](https://mazzorella.github.io/ClickTapToe/hardware/mouse-pointer/kicanvas.html)
+to inspect the schematic and PCB in a browser.
 
-```text
-https://mazzorella.github.io/ClickTapToe/hardware/mouse-pointer/kicanvas.html
-```
+## Files
 
-## Planned Layout
-
-- `kicad/` for KiCad project source files
-- `production/` for generated Gerbers, drill files, BOMs, and placement files
+- [KiCad project source](kicad/)
+- [Fabrication and assembly files](kicad/production/), including Gerbers, drill
+  files, the bill of materials, and the placement file.
